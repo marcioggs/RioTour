@@ -24,24 +24,24 @@ public interface LugarDAO {
 	 * Obtém os hotéis.
 	 * @return Hotéis.
 	 */
-	Set<HotelDTO> obterHoteis();
+	Set<HotelDTO> obterHoteis() throws IOException;
 
 	/**
 	 * Obtém os monumentos.
 	 * @return Monumentos
 	 */
-	Set<MonumentoDTO> obterMonumentos();
+	Set<MonumentoDTO> obterMonumentos() throws IOException;
 
 	/**
 	 * Obtém os museus.
 	 * @return Museus
 	 */
-	Set<MuseuDTO> obterMuseus();
+	Set<MuseuDTO> obterMuseus() throws IOException;
 
 	/**
 	 * Obtém as praias.
 	 * @return Praias
 	 */
-	Set<PraiaDTO> obterPraias();
+	Set<PraiaDTO> obterPraias() throws IOException;
 
 }

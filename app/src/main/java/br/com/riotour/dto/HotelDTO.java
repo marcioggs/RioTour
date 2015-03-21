@@ -9,9 +9,11 @@ public class HotelDTO extends LugarDTO {
 	private String numero;
 	private String bairro;
 	private String fax;
+	private String email;
 	private String categoria;
 	private String qtdAcomodacoesCadeirante;
 	private String qtdAcomodacoesCaoGuia;
+	private String telefoneParaSurdos;
 	private String telefone;
 	private String cnpj;
 	private String idiomasFalados;
@@ -48,6 +50,14 @@ public class HotelDTO extends LugarDTO {
 		this.fax = fax;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getCategoria() {
 		return categoria;
 	}
@@ -70,6 +80,14 @@ public class HotelDTO extends LugarDTO {
 
 	public void setQtdAcomodacoesCaoGuia(String qtdAcomodacoesCaoGuia) {
 		this.qtdAcomodacoesCaoGuia = qtdAcomodacoesCaoGuia;
+	}
+
+	public String getTelefoneParaSurdos() {
+		return telefoneParaSurdos;
+	}
+
+	public void setTelefoneParaSurdos(String telefoneParaSurdos) {
+		this.telefoneParaSurdos = telefoneParaSurdos;
 	}
 
 	public String getTelefone() {

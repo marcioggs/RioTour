@@ -5,17 +5,17 @@ package br.com.riotour.dto;
  */
 public class MuseuDTO extends LugarDTO {
 
-	private String logradouro;
+	private String endereco;
 	private String numero;
 	private String bairro;
 	private String telefone;
 
-	public String getLogradouro() {
-		return logradouro;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getNumero() {

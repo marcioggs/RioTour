@@ -3,19 +3,25 @@ package br.com.riotour.dao;
 import android.content.Context;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+import br.com.riotour.R;
 import br.com.riotour.dto.HotelDTO;
 import br.com.riotour.dto.MonumentoDTO;
 import br.com.riotour.dto.MuseuDTO;
 import br.com.riotour.dto.PontoTuristicoDTO;
 import br.com.riotour.dto.PraiaDTO;
+import br.com.riotour.util.csv.CsvReader;
 
 /**
  * Classe responsável pela persistência dos lugares em arquivo CSV.
  */
 public class LugarDAOImpl implements LugarDAO {
+
+	//TODO: Acertar encoding. Os acentos estão ficando errados.
+	//TODO: Nos arquivos CSV originais, alguns pontos estão sem lat e long, tratar para desconsiderar na aplicação caso baixe os arquivos em tempo de execução.
 
 	Context ctx;
 
@@ -27,77 +33,148 @@ public class LugarDAOImpl implements LugarDAO {
 		this.ctx = ctx;
 	}
 
-	//TODO: Obter lugares a partir do CSV
-
 	@Override
 	public Set<PontoTuristicoDTO> obterPontosTuristicos() throws IOException {
-
 		Set<PontoTuristicoDTO> lugares = new HashSet<>();
 
-/*		InputStream arquivo = ctx.getResources().openRawResource(R.raw.pontos_turisticos);
-		CsvParser.Keyed keyed = new CsvParser().on(arquivo).keyed();
+		InputStream arquivo = ctx.getResources().openRawResource(R.raw.pontos_turisticos);
+		CsvReader.Keyed keyed = new CsvReader(arquivo).keyed();
 
-		CsvParser.Keyed.Line linha = keyed.next();
+		CsvReader.Keyed.Line linha = keyed.next();
 
 		while (linha != null) {
+			PontoTuristicoDTO lugar = new PontoTuristicoDTO();
 
-			PontoTuristicoDTO p = new PontoTuristicoDTO();
+			lugar.setNome(linha.get("Nome"));
+			lugar.setEndereco(linha.get("Endereço"));
+			lugar.setNumero(linha.get("Número"));
+			lugar.setBairro(linha.get("Bairro"));
+			lugar.setTelefone(linha.get("Telefone"));
+			lugar.setLatitude(linha.get("latitude"));
+			lugar.setLongitude(linha.get("longitude"));
 
-			p.setNome(linha.get("Nome"));
-			p.setEndereco(linha.get("Endereço"));
-			p.setNumero(linha.get("Número"));
-			p.setBairro(linha.get("Bairro"));
-			p.setTelefone(linha.get("Telefone"));
-			p.setLatitude(linha.get("latitude"));
-			p.setLongitude(linha.get("longitude"));
-
+			lugares.add(lugar);
 			linha = keyed.next();
-		}*/
-
-		PontoTuristicoDTO ponto;
-
-		ponto = new PontoTuristicoDTO();
-		ponto.setNome("Lugar 1");
-		ponto.setLatitude(-22.906847);
-		ponto.setLongitude(-43.172896);
-		lugares.add(ponto);
-
-		ponto = new PontoTuristicoDTO();
-		ponto.setNome("Lugar 2");
-		ponto.setLatitude(-22.906202);
-		ponto.setLongitude(-43.170122);
-		lugares.add(ponto);
-
-		ponto = new PontoTuristicoDTO();
-		ponto.setNome("Lugar 3");
-		ponto.setLatitude(-22.909404);
-		ponto.setLongitude(-43.170701);
-		lugares.add(ponto);
+		}
 
 		return lugares;
 	}
 
 	@Override
-	public Set<HotelDTO> obterHoteis() {
+	public Set<HotelDTO> obterHoteis() throws IOException {
 		Set<HotelDTO> lugares = new HashSet<>();
+
+		InputStream arquivo = ctx.getResources().openRawResource(R.raw.hoteis);
+		CsvReader.Keyed keyed = new CsvReader(arquivo).keyed();
+
+		CsvReader.Keyed.Line linha = keyed.next();
+
+		while (linha != null) {
+			HotelDTO lugar = new HotelDTO();
+
+			lugar.setNome(linha.get("Nome"));
+			lugar.setLogradouro(linha.get("Logradouro"));
+			lugar.setNumero(linha.get("Número"));
+			lugar.setBairro(linha.get("Bairro"));
+			lugar.setTelefone(linha.get("Telefone"));
+			lugar.setFax(linha.get("Fax"));
+			lugar.setCategoria(linha.get("Categoria"));
+			lugar.setEmail(linha.get("Email"));
+			lugar.setLatitude(linha.get("Latitude"));
+			lugar.setLongitude(linha.get("Longitude"));
+			lugar.setQtdAcomodacoesCadeirante(linha.get("Acomodação de Cadeirante"));
+			lugar.setQtdAcomodacoesCaoGuia(linha.get("Acomodação de Cão Guia"));
+			lugar.setTelefoneParaSurdos(linha.get("Telefone para Surdos"));
+			lugar.setCnpj(linha.get("CNPJ"));
+			lugar.setIdiomasFalados(linha.get("Idiomas Falados"));
+
+			lugares.add(lugar);
+			linha = keyed.next();
+		}
+
 		return lugares;
 	}
 
 	@Override
-	public Set<MonumentoDTO> obterMonumentos() {
+	public Set<MonumentoDTO> obterMonumentos() throws IOException {
 		Set<MonumentoDTO> lugares = new HashSet<>();
+
+		InputStream arquivo = ctx.getResources().openRawResource(R.raw.monumentos);
+		CsvReader.Keyed keyed = new CsvReader(arquivo).keyed();
+
+		CsvReader.Keyed.Line linha = keyed.next();
+
+		while (linha != null) {
+			MonumentoDTO lugar = new MonumentoDTO();
+
+			lugar.setCodigo(linha.get("Código"));
+			lugar.setNome(linha.get("Nome"));
+			lugar.setHistorico(linha.get("Histórico"));
+			lugar.setUrlFoto(linha.get("Foto"));
+			lugar.setAutor(linha.get("Autor"));
+			lugar.setInauguracao(linha.get("Inauguração"));
+			lugar.setLocalizacao(linha.get("Localização"));
+			lugar.setLatitude(linha.get("Latitude"));
+			lugar.setLongitude(linha.get("Longitude"));
+
+			lugares.add(lugar);
+			linha = keyed.next();
+		}
+
 		return lugares;
 	}
 
 	@Override
-	public Set<MuseuDTO> obterMuseus() {
+	public Set<MuseuDTO> obterMuseus() throws IOException {
 		Set<MuseuDTO> lugares = new HashSet<>();
+
+		InputStream arquivo = ctx.getResources().openRawResource(R.raw.museus);
+		CsvReader.Keyed keyed = new CsvReader(arquivo).keyed();
+
+		CsvReader.Keyed.Line linha = keyed.next();
+
+		while (linha != null) {
+			MuseuDTO lugar = new MuseuDTO();
+
+			lugar.setNome(linha.get("Nome"));
+			lugar.setEndereco(linha.get("Endereço"));
+			lugar.setNumero(linha.get("Número"));
+			lugar.setBairro(linha.get("Bairro"));
+			lugar.setTelefone(linha.get("Telefone"));
+			lugar.setLatitude(linha.get("latitude"));
+			lugar.setLongitude(linha.get("longitude"));
+
+			lugares.add(lugar);
+			linha = keyed.next();
+		}
+
 		return lugares;
 	}
 
 	@Override
-	public Set<PraiaDTO> obterPraias() {
+	public Set<PraiaDTO> obterPraias() throws IOException {
 		Set<PraiaDTO> lugares = new HashSet<>();
+
+		InputStream arquivo = ctx.getResources().openRawResource(R.raw.praias);
+		CsvReader.Keyed keyed = new CsvReader(arquivo).keyed();
+
+		CsvReader.Keyed.Line linha = keyed.next();
+
+		while (linha != null) {
+			PraiaDTO lugar = new PraiaDTO();
+
+			lugar.setNome(linha.get("Nome"));
+			lugar.setEndereco(linha.get("Endereço"));
+			lugar.setNumero(linha.get("Número"));
+			lugar.setBairro(linha.get("Bairro"));
+			lugar.setTelefone(linha.get("Telefone"));
+			lugar.setLatitude(linha.get("latitude"));
+			lugar.setLongitude(linha.get("longitude"));
+
+			lugares.add(lugar);
+			linha = keyed.next();
+		}
+
 		return lugares;
 	}
 

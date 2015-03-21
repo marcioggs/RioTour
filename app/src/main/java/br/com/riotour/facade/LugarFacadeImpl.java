@@ -15,7 +15,7 @@ import br.com.riotour.dto.LugarDTO;
  */
 public class LugarFacadeImpl implements LugarFacade {
 	Context ctx;
-	LugarDAO dao = new LugarDAOImpl(ctx);
+	LugarDAO dao;
 
 	/**
 	 * Construtor.
@@ -23,6 +23,7 @@ public class LugarFacadeImpl implements LugarFacade {
 	 */
 	public LugarFacadeImpl(Context ctx) {
 		this.ctx = ctx;
+		dao = new LugarDAOImpl(ctx);
 	}
 
 	@Override

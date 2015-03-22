@@ -8,6 +8,7 @@ public abstract class LugarDTO {
 	private String nome;
 	private double latitude;
 	private double longitude;
+	private int icone;
 
 	public String getNome() {
 		return nome;
@@ -39,5 +40,13 @@ public abstract class LugarDTO {
 
 	public void setLongitude(String longitude) {
 		this.longitude = Double.parseDouble(longitude);
+	}
+
+	public int getIcone() {
+		return icone;
+	}
+
+	public void setIcone(int icone) {
+		this.icone = icone;
 	}
 }

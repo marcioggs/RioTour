@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -81,12 +83,16 @@ public class MapsActivity extends ActionBarActivity {
         for (LugarDTO lugar : lugares)  {
             MarkerOptions markerOption = new MarkerOptions()
                .position(new LatLng(lugar.getLatitude(), lugar.getLongitude()))
-		       .title(lugar.getNome());
+		       .title(lugar.getNome())
+		       .icon(BitmapDescriptorFactory.fromResource(lugar.getIcone()));
 
             Marker marcador = mapa.addMarker(markerOption);
-	        //TODO: Colocar icone de acordo com ponto turístico
             mapLugares.put(marcador, lugar);
         }
     }
+
+	/*private BitmapDescriptor obterIcone(int idIcone) {
+		return BitmapDescriptorFactory.fromBitmap()fromResource(idIcone);
+	}*/
 
 }

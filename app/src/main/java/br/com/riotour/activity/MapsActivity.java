@@ -2,21 +2,19 @@ package br.com.riotour.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.MarkerManager;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Set;
 
 import br.com.riotour.R;
@@ -28,6 +26,9 @@ public class MapsActivity extends ActionBarActivity {
 
 	//TODO: Traduzir para inglês.
 	//TODO: Colocar strings em arquivo.
+	//TODO: Trocar ícone do cluster.
+	//TODO: Trocar ícone do marcador selecionado.
+	//TODO: Criar intent para caminho até o lugar na activity de detalhes.
 
     private GoogleMap mapa;
 	private Set<LugarDTO> lugares;
@@ -36,10 +37,21 @@ public class MapsActivity extends ActionBarActivity {
 	private static final LatLng POS_RJ = new LatLng(-22.9068467, -43.1728965);
 	private static final float ZOOM_RJ = 13f;
 
-    @Override
+	//Objetos usados na view de detalhe
+	private View detalhe;
+	private ImageView icone;
+	private TextView tipo;
+	private TextView nome;
+
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+		detalhe = findViewById(R.id.detalhe);
+		icone = (ImageView) findViewById(R.id.icone_lugar);
+		tipo = (TextView) findViewById(R.id.tipo_lugar);
+		nome = (TextView) findViewById(R.id.nome_lugar);
 
 	    obterLugares();
 	    configurarMapa();
@@ -70,8 +82,7 @@ public class MapsActivity extends ActionBarActivity {
 	 */
     private void configurarMapa() {
         if (mapa == null) {
-            mapa = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                    .getMap();
+            mapa = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 
 	        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(POS_RJ, ZOOM_RJ));
 
@@ -80,20 +91,33 @@ public class MapsActivity extends ActionBarActivity {
 	        mapa.setOnCameraChangeListener(clusterManager);
 	        mapa.setOnMarkerClickListener(clusterManager);
 	        mapa.setOnInfoWindowClickListener(clusterManager);
+	        mapa.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+		        @Override
+		        public void onMapClick(LatLng latLng) {
+			        detalhe.setVisibility(View.GONE);
+		        }
+	        });
 
 	        clusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<LugarDTO>() {
 		        @Override
 		        public boolean onClusterClick(Cluster<LugarDTO> lugarCluster) {
-			        Toast.makeText(MapsActivity.this, "Use o zoom para detalhar " + lugarCluster.getSize() + " itens.", Toast.LENGTH_SHORT).show();
+			        mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(lugarCluster.getPosition(), mapa.getCameraPosition().zoom + 2));
 			        return true;
 		        }
 	        });
 
-	        clusterManager.setOnClusterItemInfoWindowClickListener(new ClusterManager.OnClusterItemInfoWindowClickListener<LugarDTO>() {
+	        clusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<LugarDTO>() {
 		        @Override
-		        public void onClusterItemInfoWindowClick(LugarDTO lugar) {
-			        //TODO: Criar e chamar activity que detalha as informações.
-			        Toast.makeText(MapsActivity.this, lugar.getNome(), Toast.LENGTH_SHORT).show();
+		        public boolean onClusterItemClick(LugarDTO lugar) {
+			        //TODO: Criar botão e chamar activity que detalha as informações.
+			        mapa.animateCamera(CameraUpdateFactory.newLatLng(lugar.getPosition()));
+
+			        detalhe.setVisibility(View.VISIBLE);
+			        icone.setImageResource(lugar.getIcone());
+			        tipo.setText(lugar.getTipo());
+			        nome.setText(lugar.getNome());
+
+			        return true;
 		        }
 	        });
 

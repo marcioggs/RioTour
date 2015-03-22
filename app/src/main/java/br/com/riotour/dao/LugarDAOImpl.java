@@ -46,6 +46,7 @@ public class LugarDAOImpl implements LugarDAO {
 			PontoTuristicoDTO lugar = new PontoTuristicoDTO();
 
 			lugar.setIcone(R.drawable.ponto_turistico);
+			lugar.setTipo("Ponto Turístico");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setEndereco(linha.get("Endereço"));
 			lugar.setNumero(linha.get("Número"));
@@ -74,6 +75,7 @@ public class LugarDAOImpl implements LugarDAO {
 			HotelDTO lugar = new HotelDTO();
 
 			lugar.setIcone(R.drawable.hotel);
+			lugar.setTipo("Hotel");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setLogradouro(linha.get("Logradouro"));
 			lugar.setNumero(linha.get("Número"));
@@ -110,6 +112,7 @@ public class LugarDAOImpl implements LugarDAO {
 			MonumentoDTO lugar = new MonumentoDTO();
 
 			lugar.setIcone(R.drawable.monumento);
+			lugar.setTipo("Monumento");
 			lugar.setCodigo(linha.get("Código"));
 			lugar.setNome(linha.get("Nome"));
 			lugar.setHistorico(linha.get("Histórico"));
@@ -140,6 +143,7 @@ public class LugarDAOImpl implements LugarDAO {
 			MuseuDTO lugar = new MuseuDTO();
 
 			lugar.setIcone(R.drawable.museu);
+			lugar.setTipo("Museu");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setEndereco(linha.get("Endereço"));
 			lugar.setNumero(linha.get("Número"));
@@ -168,6 +172,7 @@ public class LugarDAOImpl implements LugarDAO {
 			PraiaDTO lugar = new PraiaDTO();
 
 			lugar.setIcone(R.drawable.praia);
+			lugar.setTipo("Praia");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setEndereco(linha.get("Endereço"));
 			lugar.setNumero(linha.get("Número"));

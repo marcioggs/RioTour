@@ -11,4 +11,40 @@
         tools:context="br.com.riotour.activity.MapsActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
+    <RelativeLayout
+        android:id="@+id/detalhe"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_branco"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/icone_lugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/tipo_lugar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="12sp"
+            android:layout_toRightOf="@id/icone_lugar"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/nome_lugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_below="@id/icone_lugar"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"/>
+
+    </RelativeLayout>
+
 </RelativeLayout>

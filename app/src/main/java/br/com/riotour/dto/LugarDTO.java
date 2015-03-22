@@ -12,6 +12,7 @@ public abstract class LugarDTO implements ClusterItem  {
 	private double latitude;
 	private double longitude;
 	private int icone;
+	private String tipo;
 
 	@Override
 	public LatLng getPosition() {
@@ -56,6 +57,14 @@ public abstract class LugarDTO implements ClusterItem  {
 
 	public void setIcone(int icone) {
 		this.icone = icone;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 }

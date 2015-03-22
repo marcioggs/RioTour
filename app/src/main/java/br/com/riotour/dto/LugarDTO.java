@@ -1,14 +1,22 @@
 package br.com.riotour.dto;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.clustering.ClusterItem;
+
 /**
  * Classe responsável pela modelagem do lugar.
  */
-public abstract class LugarDTO {
+public abstract class LugarDTO implements ClusterItem  {
 
 	private String nome;
 	private double latitude;
 	private double longitude;
 	private int icone;
+
+	@Override
+	public LatLng getPosition() {
+		return new LatLng(getLatitude(), getLongitude());
+	}
 
 	public String getNome() {
 		return nome;
@@ -49,4 +57,5 @@ public abstract class LugarDTO {
 	public void setIcone(int icone) {
 		this.icone = icone;
 	}
+
 }

@@ -29,8 +29,10 @@ public class MapsActivity extends ActionBarActivity {
 	//TODO: Trocar ícone do cluster.
 	//TODO: Trocar ícone do marcador selecionado.
 	//TODO: Criar intent para caminho até o lugar na activity de detalhes.
+	//TODO: Manter a posição quando mudar de orientação.
+	//TODO: Colocar ícone de info do lado direito na view de detalhe.
 
-    private GoogleMap mapa;
+	private GoogleMap mapa;
 	private Set<LugarDTO> lugares;
 	private ClusterManager<LugarDTO> clusterManager;
 
@@ -42,25 +44,41 @@ public class MapsActivity extends ActionBarActivity {
 	private ImageView icone;
 	private TextView tipo;
 	private TextView nome;
+	private ImageView botaoInfo;
 
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_maps);
 
-		detalhe = findViewById(R.id.detalhe);
-		icone = (ImageView) findViewById(R.id.icone_lugar);
-		tipo = (TextView) findViewById(R.id.tipo_lugar);
-		nome = (TextView) findViewById(R.id.nome_lugar);
-
-	    obterLugares();
-	    configurarMapa();
-    }
+		configurarViewDetalhe();
+		obterLugares();
+		configurarMapa();
+	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		configurarMapa();
+	}
+
+	/**
+	 * Configura a view de detalhe.
+	 */
+	private void configurarViewDetalhe() {
+		detalhe = findViewById(R.id.detalhe);
+		icone = (ImageView) findViewById(R.id.icone_lugar);
+		tipo = (TextView) findViewById(R.id.tipo_lugar);
+		nome = (TextView) findViewById(R.id.nome_lugar);
+		botaoInfo = (ImageView) findViewById(R.id.botao_info);
+
+		botaoInfo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//TODO: Mudar para activity de detalhe.
+				Toast.makeText(MapsActivity.this, "TODO: Mudar para activity de detalhe", Toast.LENGTH_LONG).show();
+			}
+		});
 	}
 
 	/**
@@ -98,31 +116,31 @@ public class MapsActivity extends ActionBarActivity {
 		        }
 	        });
 
-	        clusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<LugarDTO>() {
-		        @Override
-		        public boolean onClusterClick(Cluster<LugarDTO> lugarCluster) {
-			        mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(lugarCluster.getPosition(), mapa.getCameraPosition().zoom + 2));
-			        return true;
-		        }
-	        });
+			clusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<LugarDTO>() {
+				@Override
+				public boolean onClusterClick(Cluster<LugarDTO> lugarCluster) {
+					mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(lugarCluster.getPosition(), mapa.getCameraPosition().zoom + 2));
+					return true;
+				 }
+			});
 
-	        clusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<LugarDTO>() {
-		        @Override
-		        public boolean onClusterItemClick(LugarDTO lugar) {
-			        //TODO: Criar botão e chamar activity que detalha as informações.
-			        mapa.animateCamera(CameraUpdateFactory.newLatLng(lugar.getPosition()));
+			clusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<LugarDTO>() {
+				@Override
+				public boolean onClusterItemClick(LugarDTO lugar) {
+					//TODO: Criar botão e chamar activity que detalha as informações.
+					mapa.animateCamera(CameraUpdateFactory.newLatLng(lugar.getPosition()));
 
-			        detalhe.setVisibility(View.VISIBLE);
-			        icone.setImageResource(lugar.getIcone());
-			        tipo.setText(lugar.getTipo());
-			        nome.setText(lugar.getNome());
+					detalhe.setVisibility(View.VISIBLE);
+					icone.setImageResource(lugar.getIcone());
+					tipo.setText(lugar.getTipo());
+					nome.setText(lugar.getNome());
 
-			        return true;
-		        }
-	        });
+					return true;
+				}
+			});
 
-	        clusterManager.addItems(lugares);
-	        clusterManager.cluster();
+			clusterManager.addItems(lugares);
+			clusterManager.cluster();
         }
     }
 

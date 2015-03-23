@@ -35,6 +35,7 @@
             android:layout_toRightOf="@id/icone_lugar"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"/>
+
         <TextView
             android:id="@+id/nome_lugar"
             android:layout_width="match_parent"
@@ -42,8 +43,19 @@
             android:textSize="20sp"
             android:gravity="center"
             android:layout_below="@id/icone_lugar"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/botao_info"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/icone_lugar"
+            android:layout_toLeftOf="@id/nome_lugar"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/info" />
+
+        <!--android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/nome_lugar"-->
 
     </RelativeLayout>
 

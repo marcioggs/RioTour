@@ -3,10 +3,12 @@ package br.com.riotour.dto;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
 
+import java.io.Serializable;
+
 /**
  * Classe responsável pela modelagem do lugar.
  */
-public abstract class LugarDTO implements ClusterItem  {
+public abstract class LugarDTO implements ClusterItem,Serializable {
 
 	private String nome;
 	private double latitude;

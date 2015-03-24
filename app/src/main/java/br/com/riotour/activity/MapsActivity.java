@@ -1,5 +1,6 @@
 package br.com.riotour.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -28,7 +29,6 @@ public class MapsActivity extends ActionBarActivity {
 	//TODO: Colocar strings em arquivo.
 	//TODO: Trocar ícone do cluster.
 	//TODO: Trocar ícone do marcador selecionado.
-	//TODO: Criar intent para caminho até o lugar na activity de detalhes.
 	//TODO: Manter a posição quando mudar de orientação.
 	//TODO: Colocar ícone de info do lado direito na view de detalhe.
 
@@ -45,6 +45,7 @@ public class MapsActivity extends ActionBarActivity {
 	private TextView tipo;
 	private TextView nome;
 	private ImageView botaoInfo;
+    private LugarDTO lugarSelecionado;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +76,9 @@ public class MapsActivity extends ActionBarActivity {
 		botaoInfo.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//TODO: Mudar para activity de detalhe.
-				Toast.makeText(MapsActivity.this, "TODO: Mudar para activity de detalhe", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MapsActivity.this, DetalheActivity.class);
+                intent.putExtra("lugar", lugarSelecionado);
+				startActivity(intent);
 			}
 		});
 	}
@@ -90,7 +92,7 @@ public class MapsActivity extends ActionBarActivity {
 		try {
 			lugares = facade.obterLugares();
 		} catch (IOException e) {
-			Toast.makeText(MapsActivity.this, "Ocorreu um erro ao ler o arquivo", Toast.LENGTH_SHORT)
+			Toast.makeText(MapsActivity.this, getString(R.string.error_reading_file), Toast.LENGTH_SHORT)
 					.show();
 		}
 	}
@@ -134,7 +136,7 @@ public class MapsActivity extends ActionBarActivity {
 					icone.setImageResource(lugar.getIcone());
 					tipo.setText(lugar.getTipo());
 					nome.setText(lugar.getNome());
-
+                    lugarSelecionado = lugar;
 					return true;
 				}
 			});

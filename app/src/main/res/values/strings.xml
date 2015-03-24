@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">RioTour</string>
+    <string name="title_activity_detalhe">Detalhes</string>
+    <string name="error_reading_file">Ocorreu um erro ao ler o arquivo</string>
+    <string name="history">Histórico</string>
+    <string name="author">Autor</string>
+    <string name="inaguration">Inauguração</string>
+    <string name="localization">Localização</string>
+    <string name="neighborhood">Bairro</string>
+    <string name="address">Endereço</string>
+    <string name="email">email</string>
+    <string name="phone">Telefone</string>
+    <string name="category">Categoria</string>
+
 </resources>

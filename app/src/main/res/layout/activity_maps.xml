@@ -55,9 +55,6 @@
             android:layout_marginRight="5dp"
             android:src="@drawable/info" />
 
-        <!--android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@id/nome_lugar"-->
-
     </RelativeLayout>
 
 </RelativeLayout>

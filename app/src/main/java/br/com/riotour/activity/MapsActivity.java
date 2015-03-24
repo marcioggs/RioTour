@@ -128,7 +128,6 @@ public class MapsActivity extends ActionBarActivity {
 			clusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<LugarDTO>() {
 				@Override
 				public boolean onClusterItemClick(LugarDTO lugar) {
-					//TODO: Criar botão e chamar activity que detalha as informações.
 					mapa.animateCamera(CameraUpdateFactory.newLatLng(lugar.getPosition()));
 
 					detalhe.setVisibility(View.VISIBLE);

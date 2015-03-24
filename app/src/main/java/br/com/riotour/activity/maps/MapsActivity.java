@@ -71,9 +71,8 @@ public class MapsActivity extends ActionBarActivity {
 		icone = (ImageView) findViewById(R.id.icone_lugar);
 		tipo = (TextView) findViewById(R.id.tipo_lugar);
 		nome = (TextView) findViewById(R.id.nome_lugar);
-		botaoInfo = (ImageView) findViewById(R.id.botao_info);
 
-		botaoInfo.setOnClickListener(new View.OnClickListener() {
+		detalhe.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
                 Intent intent = new Intent(MapsActivity.this, DetalheActivity.class);

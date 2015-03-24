@@ -47,12 +47,11 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/botao_info"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_below="@id/icone_lugar"
-            android:layout_toRightOf="@id/nome_lugar"
-            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
             android:src="@drawable/info" />
 
     </RelativeLayout>

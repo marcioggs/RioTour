@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.riotour.activity.DetalheActivity">
+    tools:context="br.com.riotour.activity.detalhe.DetalheActivity">
 
 
     <TextView
@@ -27,7 +27,13 @@
         android:layout_toLeftOf="@id/tituloText"
         tools:src="@drawable/monumento" />
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/fragmentDetalhe"
+        android:layout_below="@+id/tituloText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+<!--    <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +73,7 @@
                 android:elegantTextHeight="false"
                 android:textSize="17sp"
                 tools:text="O monumento ao Prefeito Pereira Passos foi uma  iniciativa dos funcionários da Municipalidade, como prova de justiça e gratidão ao grande reformador da cidade." />
-        </RelativeLayout>
-    </ScrollView>
+        </RelativeLayout>-->
+    <!--</ScrollView>-->
 
 </RelativeLayout>

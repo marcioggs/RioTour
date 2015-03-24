@@ -1,4 +1,4 @@
-package br.com.riotour.activity;
+package br.com.riotour.activity.maps;
 
 import android.content.Context;
 

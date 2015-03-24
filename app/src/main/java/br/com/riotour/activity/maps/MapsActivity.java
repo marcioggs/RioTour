@@ -1,4 +1,4 @@
-package br.com.riotour.activity;
+package br.com.riotour.activity.maps;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import br.com.riotour.R;
+import br.com.riotour.activity.detalhe.DetalheActivity;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.facade.LugarFacade;
 import br.com.riotour.facade.LugarFacadeImpl;

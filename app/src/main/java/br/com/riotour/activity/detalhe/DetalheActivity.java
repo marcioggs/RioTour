@@ -1,0 +1,111 @@
+package br.com.riotour.activity.detalhe;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import br.com.riotour.R;
+import br.com.riotour.dto.HotelDTO;
+import br.com.riotour.dto.LugarDTO;
+import br.com.riotour.dto.MonumentoDTO;
+import br.com.riotour.dto.MuseuDTO;
+import br.com.riotour.dto.PontoTuristicoDTO;
+import br.com.riotour.dto.PraiaDTO;
+
+public class DetalheActivity extends ActionBarActivity {
+
+	//TODO: Colocar imagem de volta no fragment de monumento.
+	//TODO: Usar estrelas para exibir categoria do hotel.
+	//TODO: Mostrar todas as informações.
+	//TODO: Trocar nomes por ícones? (Ex: Ícone de email)
+	//TODO: Pegar imagem do Google imagens quando não tiver?
+	//TODO: Permitir abrir detalhe activity clicando em qualquer lugar do painel de detalhe.
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detalhe);
+
+		LugarDTO lugar = (LugarDTO) getIntent().getSerializableExtra("lugar");
+
+		TextView tituloText = (TextView) findViewById(R.id.tituloText);
+		ImageView icone = (ImageView) findViewById(R.id.icone_lugar);
+
+		tituloText.setText(lugar.getNome());
+		icone.setImageResource(lugar.getIcone());
+
+		FragmentManager manager = getSupportFragmentManager();
+		Fragment fragment = manager.findFragmentById(R.id.fragmentDetalhe);
+
+		if (fragment == null) {
+			manager.beginTransaction()
+					.add(R.id.fragmentDetalhe, obterFragmentoDetalhe(lugar))
+					.commit();
+	    }
+    }
+
+	/**
+	 * Obtém o fragmento de detalhe.
+	 * @param lugar Lugar com os dados de detalhes
+	 * @return Fragmento
+	 */
+	private Fragment obterFragmentoDetalhe(LugarDTO lugar) {
+		Fragment f = null;
+
+		if (lugar instanceof MonumentoDTO) {
+			f = DetalheMonumentoFragment.newInstance((MonumentoDTO) lugar);
+		} else if (lugar instanceof HotelDTO) {
+			f = DetalheHotelFragment.newInstance((HotelDTO) lugar);
+		} else if (lugar instanceof MuseuDTO) {
+			f = DetalheMuseuFragment.newInstance((MuseuDTO) lugar);
+		} else if (lugar instanceof PontoTuristicoDTO) {
+			f = DetalhePontoTuristicoFragment.newInstance((PontoTuristicoDTO) lugar);
+		} else if (lugar instanceof PraiaDTO) {
+			f = DetalhePraiaFragment.newInstance((PraiaDTO) lugar);
+		}
+
+		return f;
+	}
+}
+
+/*
+if (lugar instanceof MonumentoDTO) {
+
+		imageView.setVisibility(View.VISIBLE);
+		MonumentoDTO m = (MonumentoDTO) lugar;
+
+		Picasso.with(this).load(m.getUrlFoto()).into(imageView);
+		detalheText.setText(getString(R.string.history) + ": " + m.getHistorico() + "\n" + "\n" +
+		getString(R.string.author) + ": " + m.getAutor() + "\n" + "\n" +
+		getString(R.string.inaguration) + ": " + m.getInauguracao() + "\n" + "\n" +
+		getString(R.string.localization) + ": " + m.getLocalizacao());
+		} else if (lugar instanceof HotelDTO) {
+
+		HotelDTO h = (HotelDTO) lugar;
+		detalheText.setText(getString(R.string.address) + ": " + h.getLogradouro() + ", " + h.getNumero() + "\n" + "\n" +
+		getString(R.string.neighborhood) + ": " + h.getBairro() + "\n" + "\n" +
+		getString(R.string.email) + ": " + h.getEmail() + "\n" + "\n" +
+		getString(R.string.phone) + ": " + h.getTelefone() + "\n" + "\n" +
+		getString(R.string.category) + ": " + h.getCategoria());
+		} else if (lugar instanceof MuseuDTO) {
+
+		MuseuDTO m = (MuseuDTO) lugar;
+		detalheText.setText(getString(R.string.address) + ": " + m.getEndereco() + ", " + m.getNumero() + "\n" + "\n" +
+		getString(R.string.neighborhood) + ": " + m.getBairro() + "\n" + "\n" +
+		getString(R.string.phone) + ": " + m.getTelefone());
+		} else if (lugar instanceof PontoTuristicoDTO) {
+
+		PontoTuristicoDTO p = (PontoTuristicoDTO) lugar;
+		detalheText.setText(getString(R.string.address) + ": " + p.getEndereco() + ", " + p.getNumero() + "\n" + "\n" +
+		getString(R.string.neighborhood) + ": " + p.getBairro() + "\n" + "\n" +
+		getString(R.string.phone) + ": " + p.getTelefone());
+		} else if (lugar instanceof PraiaDTO) {
+
+		PraiaDTO p = (PraiaDTO) lugar;
+		detalheText.setText(getString(R.string.address) + ": " + p.getEndereco() + ", " + p.getNumero() + "\n" + "\n" +
+		getString(R.string.neighborhood) + ": " + p.getBairro() + "\n" + "\n" +
+		getString(R.string.phone) + ": " + p.getTelefone());
+		}*/

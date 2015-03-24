@@ -30,7 +30,6 @@ public class MapsActivity extends ActionBarActivity {
 	//TODO: Trocar ícone do cluster.
 	//TODO: Trocar ícone do marcador selecionado.
 	//TODO: Manter a posição quando mudar de orientação.
-	//TODO: Colocar ícone de info do lado direito na view de detalhe.
 
 	private GoogleMap mapa;
 	private Set<LugarDTO> lugares;

@@ -5,10 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import br.com.riotour.R;
-import br.com.riotour.dto.HotelDTO;
 import br.com.riotour.dto.MonumentoDTO;
 
 public class DetalheMonumentoFragment extends Fragment {
@@ -41,14 +43,14 @@ public class DetalheMonumentoFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_detalhe_monumento, container, false);
 
+		ImageView campoFotoMonumento = (ImageView) v.findViewById(R.id.campo_foto_monumento);
 		TextView campoHistorico = (TextView) v.findViewById(R.id.campo_historico);
-		TextView campoUrlFoto = (TextView) v.findViewById(R.id.campo_url_foto);
 		TextView campoAutor = (TextView) v.findViewById(R.id.campo_autor);
 		TextView campoInauguracao = (TextView) v.findViewById(R.id.campo_inauguracao);
 		TextView campoLocalizacao = (TextView) v.findViewById(R.id.campo_localizacao);
 
+		Picasso.with(getActivity()).load(lugar.getUrlFoto()).into(campoFotoMonumento);
 		campoHistorico.setText(lugar.getHistorico());
-		campoUrlFoto.setText(lugar.getUrlFoto());
 		campoAutor.setText(lugar.getAutor());
 		campoInauguracao.setText(lugar.getInauguracao());
 		campoLocalizacao.setText(lugar.getLocalizacao());

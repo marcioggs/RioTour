@@ -8,72 +8,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.riotour.activity.detalhe.DetalheActivity">
 
-
-    <TextView
-        android:id="@+id/tituloText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-
-        android:textSize="24sp"
-        tools:text="Nome" />
-
-    <ImageView
-        android:id="@+id/icone_lugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/tituloText"
-        android:layout_toLeftOf="@id/tituloText"
-        tools:src="@drawable/monumento" />
-
-    <RelativeLayout
-        android:id="@+id/fragmentDetalhe"
-        android:layout_below="@+id/tituloText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-<!--    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tituloText"
-        android:layout_centerHorizontal="true">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <RelativeLayout
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/tituloText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:textSize="24sp"
+                tools:text="Nome" />
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_centerHorizontal="true"
+                android:id="@+id/icone_lugar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tituloText"
+                android:layout_toLeftOf="@id/tituloText"
                 tools:src="@drawable/monumento" />
 
-            <TextView
-                android:id="@+id/detalheText"
+            <RelativeLayout
+                android:id="@+id/fragmentDetalhe"
+                android:layout_below="@+id/tituloText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="35dp"
-                android:elegantTextHeight="false"
-                android:textSize="17sp"
-                tools:text="O monumento ao Prefeito Pereira Passos foi uma  iniciativa dos funcionários da Municipalidade, como prova de justiça e gratidão ao grande reformador da cidade." />
-
-            <TextView
-                android:id="@+id/detalheText2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/detalheText"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="35dp"
-                android:elegantTextHeight="false"
-                android:textSize="17sp"
-                tools:text="O monumento ao Prefeito Pereira Passos foi uma  iniciativa dos funcionários da Municipalidade, como prova de justiça e gratidão ao grande reformador da cidade." />
-        </RelativeLayout>-->
-    <!--</ScrollView>-->
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

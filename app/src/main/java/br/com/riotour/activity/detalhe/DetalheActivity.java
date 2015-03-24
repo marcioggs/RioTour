@@ -65,6 +65,7 @@ public class DetalheActivity extends ActionBarActivity {
 		url.append(posicao);
 		url.append("&zoom=15&size=400x150&markers=color:black%7C");
 		url.append(posicao);
+		url.append("&key=AIzaSyCXdbYHVQsMxibxsSknG47K1wQf2paFmRc");
 
 		return url.toString();
 	}

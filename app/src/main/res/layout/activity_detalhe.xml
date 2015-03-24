@@ -9,15 +9,15 @@
     tools:context="br.com.riotour.activity.detalhe.DetalheActivity">
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tituloText"
+                android:id="@+id/nome_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -29,13 +29,20 @@
                 android:id="@+id/icone_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/tituloText"
-                android:layout_toLeftOf="@id/tituloText"
+                android:layout_alignTop="@id/nome_lugar"
+                android:layout_toLeftOf="@id/nome_lugar"
+                tools:src="@drawable/monumento" />
+
+            <ImageView
+                android:id="@+id/mapa_lugar"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/nome_lugar"
                 tools:src="@drawable/monumento" />
 
             <RelativeLayout
                 android:id="@+id/fragmentDetalhe"
-                android:layout_below="@+id/tituloText"
+                android:layout_below="@+id/mapa_lugar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>

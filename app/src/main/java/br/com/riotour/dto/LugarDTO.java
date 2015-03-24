@@ -21,6 +21,10 @@ public abstract class LugarDTO implements ClusterItem,Serializable {
 		return new LatLng(getLatitude(), getLongitude());
 	}
 
+	public String getPositionToString() {
+		return latitude + "," + longitude;
+	}
+
 	public String getNome() {
 		return nome;
 	}

@@ -17,11 +17,11 @@ import br.com.riotour.dto.PraiaDTO;
 
 public class DetalheActivity extends ActionBarActivity {
 
-	//TODO: Usar estrelas para exibir categoria do hotel.
 	//TODO: Trocar nomes por ícones? (Ex: Ícone de email)
 	//TODO: Pegar imagem do Google imagens quando não tiver?
-	//TODO: Permitir abrir detalhe activity clicando em qualquer lugar do painel de detalhe.
 	//TODO: Colocar botão de voltar na action bar.
+	//TODO: Criar intent para permitir telefonar para os números da app.
+	//TODO: Criar intent para permitir enviar email para os emails da app.
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

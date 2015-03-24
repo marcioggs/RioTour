@@ -5,7 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.google.common.primitives.Floats;
 
 import br.com.riotour.R;
 import br.com.riotour.dto.HotelDTO;
@@ -45,7 +48,8 @@ public class DetalheHotelFragment extends Fragment {
 		TextView campoBairro = (TextView) v.findViewById(R.id.campo_bairro);
 		TextView campoFax = (TextView) v.findViewById(R.id.campo_fax);
 		TextView campoEmail = (TextView) v.findViewById(R.id.campo_email);
-		TextView campoCategoria = (TextView) v.findViewById(R.id.campo_categoria);
+		RatingBar campoCategoriaRating = (RatingBar) v.findViewById(R.id.campo_categoria_rating);
+		TextView campoCategoriaTexto = (TextView) v.findViewById(R.id.campo_categoria_texto);
 		TextView campoQtdAcomodacoesCadeirante = (TextView) v.findViewById(R.id.campo_qtd_acomodacoes_cadeirantes);
 		TextView campoQtdAcomodacoesCaoGuia = (TextView) v.findViewById(R.id.campo_qtd_acomodacoes_cao_guia);
 		TextView campoTelefoneParaSurdos = (TextView) v.findViewById(R.id.campo_telefone_para_surdos);
@@ -58,7 +62,18 @@ public class DetalheHotelFragment extends Fragment {
 		campoBairro.setText(lugar.getBairro());
 		campoFax.setText(lugar.getFax());
 		campoEmail.setText(lugar.getEmail());
-		campoCategoria.setText(lugar.getCategoria());
+
+		Float categoriaRating = Floats.tryParse(lugar.getCategoria());
+		if (categoriaRating != null) {
+			campoCategoriaRating.setRating(categoriaRating);
+			campoCategoriaRating.setVisibility(View.VISIBLE);
+			campoCategoriaTexto.setVisibility(View.GONE);
+		} else {
+			campoCategoriaTexto.setText(lugar.getCategoria());
+			campoCategoriaRating.setVisibility(View.GONE);
+			campoCategoriaTexto.setVisibility(View.VISIBLE);
+		}
+
 		campoQtdAcomodacoesCadeirante.setText(lugar.getQtdAcomodacoesCadeirante());
 		campoQtdAcomodacoesCaoGuia.setText(lugar.getQtdAcomodacoesCaoGuia());
 		campoTelefoneParaSurdos.setText(lugar.getTelefoneParaSurdos());

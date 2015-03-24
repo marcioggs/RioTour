@@ -11,6 +11,17 @@
         tools:context="br.com.riotour.activity.maps.MapsActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/getCurrentLocation"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_mylocation"
+        android:contentDescription="Obter localização atual"
+        />
     <RelativeLayout
         android:id="@+id/detalhe"
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,8 @@ public class MapsActivity extends ActionBarActivity {
 	private TextView nome;
 	private ImageView botaoInfo;
     private LugarDTO lugarSelecionado;
+    private ImageButton getCurrentLocation;
+    private GPSTracker gps;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +58,36 @@ public class MapsActivity extends ActionBarActivity {
 		configurarViewDetalhe();
 		obterLugares();
 		configurarMapa();
+        configurarObtemPosicao();
 	}
 
-	@Override
+    private void configurarObtemPosicao() {
+        getCurrentLocation = (ImageButton) findViewById(R.id.getCurrentLocation);
+        getCurrentLocation.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // create class object
+                gps = new GPSTracker(MapsActivity.this);
+
+                // Verifica se o GPS esta habilitado
+                if(gps.canGetLocation()){
+
+                    //Toast.makeText(getApplicationContext(), "Sua localização é - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+                    mapa.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(gps.getLatitude(), gps.getLongitude())));
+                }else{
+                    // Não conseguiu pegar a localização
+                    // GPS or Network não esta habilitada
+                    // Pedir para usuário habulitar GPS/Network nas configurações
+                    gps.showSettingsAlert();
+                }
+
+
+            }
+        });
+    }
+
+    @Override
 	protected void onResume() {
 		super.onResume();
 		configurarMapa();
@@ -143,5 +173,6 @@ public class MapsActivity extends ActionBarActivity {
 			clusterManager.cluster();
         }
     }
+
 
 }

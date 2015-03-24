@@ -11,5 +11,9 @@
     <string name="email">email</string>
     <string name="phone">Telefone</string>
     <string name="category">Categoria</string>
+    <string name="gps_settings">Configuração do GPS</string>
+    <string name="gps_msg">O GPS não está ativo. Você gostaria de ir as configurações e ativa-lo?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="settings">Configurações</string>
 
 </resources>

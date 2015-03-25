@@ -43,7 +43,6 @@ public class MapsActivity extends ActionBarActivity {
 	//TODO: Trocar ícone do marcador selecionado.
 	//TODO: Manter a posição quando mudar de orientação.
     //TODO: Atualizar materialdrawer foi utilizada uma versão anterior que o botao sanduiche funcionava
-    //TODO: Adicionar Search button na ActionBar (tentando via menu com o android:showAsAction="Always" mas não funcionou devido ao appcompat)
     //TODO: Desenvolver Activity de Pesquisa
 
 	private GoogleMap mapa;
@@ -110,9 +109,17 @@ public class MapsActivity extends ActionBarActivity {
                 else
                     result.openDrawer();
                 return true;
+            case R.id.menu_search:
+                Toast.makeText(MapsActivity.this, "Activity de pesquisa", Toast.LENGTH_SHORT)
+                        .show();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_map, menu);
+        return true;
     }
 
     private void configurarObtemPosicao() {

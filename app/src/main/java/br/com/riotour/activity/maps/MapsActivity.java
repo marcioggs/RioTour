@@ -3,7 +3,12 @@ package br.com.riotour.activity.maps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +20,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.io.IOException;
 import java.util.Set;
@@ -32,6 +42,9 @@ public class MapsActivity extends ActionBarActivity {
 	//TODO: Trocar ícone do cluster.
 	//TODO: Trocar ícone do marcador selecionado.
 	//TODO: Manter a posição quando mudar de orientação.
+    //TODO: Atualizar materialdrawer foi utilizada uma versão anterior que o botao sanduiche funcionava
+    //TODO: Adicionar Search button na ActionBar (tentando via menu com o android:showAsAction="Always" mas não funcionou devido ao appcompat)
+    //TODO: Desenvolver Activity de Pesquisa
 
 	private GoogleMap mapa;
 	private Set<LugarDTO> lugares;
@@ -49,17 +62,58 @@ public class MapsActivity extends ActionBarActivity {
     private LugarDTO lugarSelecionado;
     private ImageButton getCurrentLocation;
     private GPSTracker gps;
+    private Drawer.Result result = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maps);
 
+        configurarDrawer();
 		configurarViewDetalhe();
 		obterLugares();
 		configurarMapa();
         configurarObtemPosicao();
 	}
+
+    private void configurarDrawer() {
+
+
+        result = new Drawer()
+                .withActivity(this)
+                .withActionBarDrawerToggleAnimated(true)
+                .withActionBarDrawerToggle(true)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName("Home"),
+                        new SecondaryDrawerItem().withName("Pesquisar"),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Sobre")
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
+                        // do something with the clicked item :D
+                    }
+                })
+                .build();
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (result.isDrawerOpen())
+                    result.closeDrawer();
+                else
+                    result.openDrawer();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void configurarObtemPosicao() {
         getCurrentLocation = (ImageButton) findViewById(R.id.getCurrentLocation);

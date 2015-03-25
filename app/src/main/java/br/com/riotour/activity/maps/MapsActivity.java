@@ -85,13 +85,17 @@ public class MapsActivity extends ActionBarActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Home"),
                         new SecondaryDrawerItem().withName("Pesquisar"),
+                        new SecondaryDrawerItem().withName("Pesquisas Anteriores"),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Sobre")
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        // do something with the clicked item :D
+                        if ( position == 1 ){
+                            Toast.makeText(MapsActivity.this, "Activity de pesquisa", Toast.LENGTH_SHORT)
+                                    .show();
+                        }
                     }
                 })
                 .build();

@@ -55,7 +55,8 @@ public class LugarDAOImpl implements LugarDAO {
 			lugar.setLatitude(linha.get("latitude"));
 			lugar.setLongitude(linha.get("longitude"));
 
-			lugares.add(lugar);
+            if( lugar.getLatitude() != 0 && lugar.getLongitude() != 0 )
+			    lugares.add(lugar);
 			linha = keyed.next();
 		}
 
@@ -92,7 +93,8 @@ public class LugarDAOImpl implements LugarDAO {
 			lugar.setCnpj(linha.get("CNPJ"));
 			lugar.setIdiomasFalados(linha.get("Idiomas Falados"));
 
-			lugares.add(lugar);
+            if( lugar.getLatitude() != 0 && lugar.getLongitude() != 0 )
+			    lugares.add(lugar);
 			linha = keyed.next();
 		}
 
@@ -123,7 +125,8 @@ public class LugarDAOImpl implements LugarDAO {
 			lugar.setLatitude(linha.get("Latitude"));
 			lugar.setLongitude(linha.get("Longitude"));
 
-			lugares.add(lugar);
+            if( lugar.getLatitude() != 0 && lugar.getLongitude() != 0 )
+			    lugares.add(lugar);
 			linha = keyed.next();
 		}
 
@@ -152,7 +155,8 @@ public class LugarDAOImpl implements LugarDAO {
 			lugar.setLatitude(linha.get("latitude"));
 			lugar.setLongitude(linha.get("longitude"));
 
-			lugares.add(lugar);
+            if( lugar.getLatitude() != 0 && lugar.getLongitude() != 0 )
+			    lugares.add(lugar);
 			linha = keyed.next();
 		}
 
@@ -181,7 +185,8 @@ public class LugarDAOImpl implements LugarDAO {
 			lugar.setLatitude(linha.get("latitude"));
 			lugar.setLongitude(linha.get("longitude"));
 
-			lugares.add(lugar);
+            if( lugar.getLatitude() != 0 && lugar.getLongitude() != 0 )
+			    lugares.add(lugar);
 			linha = keyed.next();
 		}
 

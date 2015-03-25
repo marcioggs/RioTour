@@ -50,11 +50,17 @@ public abstract class LugarDTO implements ClusterItem,Serializable {
 	}
 
 	public void setLatitude(String latitude) {
-		this.latitude = Double.parseDouble(latitude);
+        if( latitude != null && latitude != "" )
+            this.latitude = Double.parseDouble(latitude);
+        else
+            this.latitude =Double.parseDouble("0");
 	}
 
 	public void setLongitude(String longitude) {
-		this.longitude = Double.parseDouble(longitude);
+        if(longitude  != null && longitude != "")
+		    this.longitude = Double.parseDouble(longitude);
+        else
+            this.longitude = Double.parseDouble("0");
 	}
 
 	public int getIcone() {

@@ -140,6 +140,7 @@ public class MapsActivity extends ActionBarActivity {
 
                     //Toast.makeText(getApplicationContext(), "Sua localização é - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
                     mapa.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(gps.getLatitude(), gps.getLongitude())));
+                    gps.stopUsingGPS();
                 }else{
                     // Não conseguiu pegar a localização
                     // GPS or Network não esta habilitada

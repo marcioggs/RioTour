@@ -1,29 +1,28 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:riotour="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map"
-        tools:context="br.com.riotour.activity.maps.MapsActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        tools:context="br.com.riotour.activity.maps.MapsActivity" />
 
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/getCurrentLocation"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        riotour:fab_icon="@android:drawable/ic_menu_mylocation"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="65dp"
+        android:layout_marginRight="20dp"
         riotour:fab_colorNormal="#64B5F6"
         riotour:fab_colorPressed="#2196F3"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"/>
+        riotour:fab_icon="@android:drawable/ic_menu_mylocation" />
 
     <RelativeLayout
         android:id="@+id/detalhe"
@@ -37,34 +36,35 @@
             android:id="@+id/icone_lugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp" />
+
         <TextView
             android:id="@+id/tipo_lugar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="12sp"
-            android:layout_toRightOf="@id/icone_lugar"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_toRightOf="@id/icone_lugar"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/nome_lugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_below="@id/icone_lugar"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_below="@id/icone_lugar"
             android:layout_alignParentRight="true"
+            android:layout_below="@id/icone_lugar"
             android:layout_marginRight="20dp"
             android:src="@drawable/info" />
 

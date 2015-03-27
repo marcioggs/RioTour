@@ -27,6 +27,6 @@ public class LugarRenderer extends DefaultClusterRenderer<LugarDTO> {
 
 	@Override
 	protected boolean shouldRenderAsCluster(Cluster<LugarDTO> cluster) {
-		return cluster.getSize() > 10;
+		return cluster.getSize() > 5;
 	}
 }

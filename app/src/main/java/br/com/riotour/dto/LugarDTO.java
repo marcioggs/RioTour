@@ -1,6 +1,7 @@
 package br.com.riotour.dto;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.common.base.Strings;
 import com.google.maps.android.clustering.ClusterItem;
 
 import java.io.Serializable;
@@ -50,17 +51,17 @@ public abstract class LugarDTO implements ClusterItem,Serializable {
 	}
 
 	public void setLatitude(String latitude) {
-        if( latitude != null && latitude != "" )
-            this.latitude = Double.parseDouble(latitude);
-        else
+        if(Strings.isNullOrEmpty(latitude))
             this.latitude =Double.parseDouble("0");
+        else
+            this.latitude = Double.parseDouble(latitude);
 	}
 
 	public void setLongitude(String longitude) {
-        if(longitude  != null && longitude != "")
-		    this.longitude = Double.parseDouble(longitude);
-        else
+        if(Strings.isNullOrEmpty(longitude))
             this.longitude = Double.parseDouble("0");
+        else
+            this.longitude = Double.parseDouble(longitude);
 	}
 
 	public int getIcone() {

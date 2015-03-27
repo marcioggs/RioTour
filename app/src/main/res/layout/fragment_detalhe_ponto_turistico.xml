@@ -20,35 +20,6 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Número:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/campo_numero"
-            tools:text="99"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Bairro:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/campo_bairro"
-            tools:text="Centro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"

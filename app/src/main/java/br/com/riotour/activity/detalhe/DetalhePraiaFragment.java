@@ -43,13 +43,16 @@ public class DetalhePraiaFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_detalhe_praia, container, false);
 
 		TextView campoEndereco = (TextView) v.findViewById(R.id.campo_endereco);
-		TextView campoNumero = (TextView) v.findViewById(R.id.campo_numero);
-		TextView campoBairro = (TextView) v.findViewById(R.id.campo_bairro);
 		TextView campoTelefone = (TextView) v.findViewById(R.id.campo_telefone);
 
-		campoEndereco.setText(lugar.getEndereco());
-		campoNumero.setText(lugar.getNumero());
-		campoBairro.setText(lugar.getBairro());
+        StringBuffer endereco = new  StringBuffer();
+        endereco.append(lugar.getEndereco());
+        if(!lugar.getNumero().isEmpty())
+            endereco.append(", " + lugar.getNumero());
+        if(!lugar.getBairro().isEmpty())
+            endereco.append(" - " + lugar.getBairro());
+
+		campoEndereco.setText(endereco);
 		campoTelefone.setText(lugar.getTelefone());
 
 		return v;

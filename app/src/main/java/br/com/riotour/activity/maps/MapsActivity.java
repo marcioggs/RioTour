@@ -3,9 +3,7 @@ package br.com.riotour.activity.maps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,13 +35,18 @@ import br.com.riotour.facade.LugarFacadeImpl;
 
 public class MapsActivity extends ActionBarActivity {
 
-	//TODO: Traduzir para inglês.
 	//TODO: Colocar strings em arquivo.
 	//TODO: Trocar ícone do cluster.
 	//TODO: Trocar ícone do marcador selecionado.
 	//TODO: Manter a posição quando mudar de orientação.
     //TODO: Atualizar materialdrawer foi utilizada uma versão anterior que o botao sanduiche funcionava
     //TODO: Desenvolver Activity de Pesquisa
+    //TODO: Desenvolver Activity de Pesquisas anteriores
+    //TODO: Trocar botão de localização por um no padrão Material Design
+    //TODO: Trocar cores para azul RJ
+    //TODO: Alterar icone do ponto turistico para uma camera
+    //TODO: Desenvolver Activity de Sobre
+    //TODO: Adicionar rota do google maps nos detalhes do local.
 
 	private GoogleMap mapa;
 	private Set<LugarDTO> lugares;
@@ -85,7 +88,7 @@ public class MapsActivity extends ActionBarActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Home"),
                         new SecondaryDrawerItem().withName("Pesquisar"),
-                        new SecondaryDrawerItem().withName("Pesquisas Anteriores"),
+                        new SecondaryDrawerItem().withName("Pesquisas Recentes"),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Sobre")
                 )

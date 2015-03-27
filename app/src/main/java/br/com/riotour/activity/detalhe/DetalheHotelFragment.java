@@ -43,9 +43,7 @@ public class DetalheHotelFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_detalhe_hotel, container, false);
 
-		TextView campoLogradouro = (TextView) v.findViewById(R.id.campo_logradouro);
-		TextView campoNumero= (TextView) v.findViewById(R.id.campo_numero);
-		TextView campoBairro = (TextView) v.findViewById(R.id.campo_bairro);
+		TextView campoEndereco = (TextView) v.findViewById(R.id.campo_endereco);
 		TextView campoFax = (TextView) v.findViewById(R.id.campo_fax);
 		TextView campoEmail = (TextView) v.findViewById(R.id.campo_email);
 		RatingBar campoCategoriaRating = (RatingBar) v.findViewById(R.id.campo_categoria_rating);
@@ -57,9 +55,14 @@ public class DetalheHotelFragment extends Fragment {
 		TextView campoCnpj = (TextView) v.findViewById(R.id.campo_cnpj);
 		TextView campoIdiomasFalados = (TextView) v.findViewById(R.id.campo_idiomas_falados);
 
-		campoLogradouro.setText(lugar.getLogradouro());
-		campoNumero.setText(lugar.getNumero());
-		campoBairro.setText(lugar.getBairro());
+        StringBuffer endereco = new  StringBuffer();
+        endereco.append(lugar.getLogradouro());
+        if(!lugar.getNumero().isEmpty())
+            endereco.append(", " + lugar.getNumero());
+        if(!lugar.getBairro().isEmpty())
+            endereco.append(" - " + lugar.getBairro());
+
+		campoEndereco.setText(endereco);
 		campoFax.setText(lugar.getFax());
 		campoEmail.setText(lugar.getEmail());
 

@@ -84,7 +84,6 @@ public final class CsvReader implements Closeable {
 							String component = line.substring(n, j);
 							c.append(component).append(configurator.quote);
 							n = j + 2;
-							continue;
 						} else {
 							String component = line.substring(n, j);
 							c.append(component);

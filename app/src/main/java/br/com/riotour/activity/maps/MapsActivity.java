@@ -142,7 +142,7 @@ public class MapsActivity extends ActionBarActivity {
                 if(gps.canGetLocation()){
 
                     //Toast.makeText(getApplicationContext(), "Sua localização é - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
-                    mapa.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(gps.getLatitude(), gps.getLongitude())));
+                    mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(gps.getLatitude(), gps.getLongitude()), mapa.getCameraPosition().zoom + 2));
                     gps.stopUsingGPS();
                 }else{
                     // Não conseguiu pegar a localização

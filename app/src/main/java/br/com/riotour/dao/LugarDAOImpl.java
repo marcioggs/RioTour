@@ -42,7 +42,7 @@ public class LugarDAOImpl implements LugarDAO {
 		while (linha != null) {
 			PontoTuristicoDTO lugar = new PontoTuristicoDTO();
 
-			lugar.setIcone(R.drawable.camera);
+			lugar.setIcone(R.drawable.ponto_turistico);
 			lugar.setTipo("Ponto Turístico");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setEndereco(linha.get("Endereço"));
@@ -72,7 +72,7 @@ public class LugarDAOImpl implements LugarDAO {
 		while (linha != null) {
 			HotelDTO lugar = new HotelDTO();
 
-			lugar.setIcone(R.drawable.hotel2);
+			lugar.setIcone(R.drawable.hotel);
 			lugar.setTipo("Hotel");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setLogradouro(linha.get("Logradouro"));
@@ -113,7 +113,7 @@ public class LugarDAOImpl implements LugarDAO {
             if (linha.get("Nome").equals("Cristo Redentor"))
                 lugar.setIcone(R.drawable.cristo);
             else
-			    lugar.setIcone(R.drawable.monumento2);
+			    lugar.setIcone(R.drawable.monumento);
 			lugar.setTipo("Monumento");
 			lugar.setCodigo(linha.get("Código"));
 			lugar.setNome(linha.get("Nome"));
@@ -145,7 +145,7 @@ public class LugarDAOImpl implements LugarDAO {
 		while (linha != null) {
 			MuseuDTO lugar = new MuseuDTO();
 
-			lugar.setIcone(R.drawable.camera);
+			lugar.setIcone(R.drawable.museu);
 			lugar.setTipo("Museu");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setEndereco(linha.get("Endereço"));
@@ -175,7 +175,7 @@ public class LugarDAOImpl implements LugarDAO {
 		while (linha != null) {
 			PraiaDTO lugar = new PraiaDTO();
 
-			lugar.setIcone(R.drawable.praia2);
+			lugar.setIcone(R.drawable.praia);
 			lugar.setTipo("Praia");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setEndereco(linha.get("Endereço"));

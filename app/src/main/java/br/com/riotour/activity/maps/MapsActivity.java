@@ -43,8 +43,6 @@ public class MapsActivity extends ActionBarActivity {
     //TODO: Desenvolver Activity de Pesquisa
     //TODO: Desenvolver Activity de Pesquisas anteriores
     //TODO: Trocar botão de localização por um no padrão Material Design
-    //TODO: Trocar cores para azul RJ
-    //TODO: Alterar icone do ponto turistico para uma camera
     //TODO: Desenvolver Activity de Sobre
     //TODO: Adicionar rota do google maps nos detalhes do local.
 

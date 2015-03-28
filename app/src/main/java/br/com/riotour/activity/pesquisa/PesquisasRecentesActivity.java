@@ -57,11 +57,23 @@ public class PesquisasRecentesActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.menu_clear) {
+            limparPesquisasRecentes();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Limpa as pesquisas recentes
+     */
+    private void limparPesquisasRecentes() {
+        pesquisaDAO.deleteAll();
+        pesquisas = pesquisaDAO.queryPesquisa();
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+        listViewPesquisas.refreshDrawableState();
+
     }
 
     /**
@@ -78,7 +90,6 @@ public class PesquisasRecentesActivity extends ActionBarActivity {
         listViewPesquisas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: chama activity de pesquisa passando a pesquisa
                 iniciarPesquisa(pesquisas.get(position));
             }
         });

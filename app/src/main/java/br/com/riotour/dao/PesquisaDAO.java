@@ -62,4 +62,9 @@ public class PesquisaDAO extends SQLiteOpenHelper {
         cursor.close();
         return list;
     }
+
+    public void deleteAll(){
+
+        getWritableDatabase().execSQL("DELETE FROM " + TABLE );
+    }
 }

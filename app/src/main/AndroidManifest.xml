@@ -36,9 +36,14 @@
         </activity>
         <activity
             android:name=".activity.pesquisa.PesquisaActivity"
-            android:label="@string/title_activity_pesquisa">
-            <meta-data android:name="android.app.searchable"
-                       android:resource="@xml/searchable"/>
+            android:label="@string/title_activity_pesquisa" >
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".activity.pesquisa.PesquisasRecentesActivity"
+            android:label="@string/title_activity_pesquisas_recentes" >
         </activity>
     </application>
 

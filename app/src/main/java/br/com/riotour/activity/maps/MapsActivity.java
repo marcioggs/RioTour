@@ -31,6 +31,7 @@ import java.util.Set;
 import br.com.riotour.R;
 import br.com.riotour.activity.detalhe.DetalheActivity;
 import br.com.riotour.activity.pesquisa.PesquisaActivity;
+import br.com.riotour.activity.pesquisa.PesquisasRecentesActivity;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.facade.LugarFacade;
 import br.com.riotour.facade.LugarFacadeImpl;
@@ -94,6 +95,8 @@ public class MapsActivity extends ActionBarActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         if ( position == 1 ){
 	                        iniciarPesquisa();
+                        }if ( position == 2 ){
+                            iniciarPesquisasAnteriores();
                         }
                     }
                 })
@@ -105,13 +108,22 @@ public class MapsActivity extends ActionBarActivity {
     }
 
 	/**
-	 * Inicia a activity de pesquisa.
-	 */
-	private void iniciarPesquisa() {
-		Intent intent = new Intent(MapsActivity.this, PesquisaActivity.class);
-		intent.putExtra(PesquisaActivity.LUGARES_KEY, (HashSet) lugares);
-		startActivity(intent);
-	}
+     * Inicia a activity de pesquisa.
+     */
+    private void iniciarPesquisa() {
+        Intent intent = new Intent(MapsActivity.this, PesquisaActivity.class);
+        intent.putExtra(PesquisaActivity.LUGARES_KEY, (HashSet) lugares);
+        startActivity(intent);
+    }
+
+    /**
+     * Inicia a activity de pesquisas anteriores.
+     */
+    private void iniciarPesquisasAnteriores() {
+        Intent intent = new Intent(MapsActivity.this, PesquisasRecentesActivity.class);
+
+        startActivity(intent);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

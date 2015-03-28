@@ -31,4 +31,8 @@
     <string name="campo_autor">Autor:</string>
     <string name="campo_inauguracao">Inauguração:</string>
     <string name="campo_localizacao">Localização:</string>
+    <string name="title_activity_pesquisas_recentes">PesquisasRecentesActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

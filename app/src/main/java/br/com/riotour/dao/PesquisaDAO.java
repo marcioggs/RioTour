@@ -53,13 +53,13 @@ public class PesquisaDAO extends SQLiteOpenHelper {
 
     public List<String> queryPesquisa() {
 
-        Cursor cursor = getReadableDatabase().query(TABLE, null, null, null, null, null, "search");
+        Cursor cursor = getReadableDatabase().query(TABLE, null, null, null, null, null, "timestamp");
         List<String> list = new ArrayList<>();
         while (cursor.moveToNext()) {
-            String pesquisa = (cursor.getString(0));
+            String pesquisa = (cursor.getString(1));
             list.add(pesquisa);
-            cursor.close();
         }
+        cursor.close();
         return list;
     }
 }

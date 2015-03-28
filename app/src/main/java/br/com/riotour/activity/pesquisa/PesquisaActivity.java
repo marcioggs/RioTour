@@ -68,7 +68,6 @@ public class PesquisaActivity extends ActionBarActivity {
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query) {
-				//TODO: Salvar em pesquisas recentes.
                 pesquisaDAO.inserir(query);
 				return false;
 			}
@@ -90,7 +89,6 @@ public class PesquisaActivity extends ActionBarActivity {
 		resultados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				//TODO: Salvar em pesquisas recentes.
 				LugarDTO lugarSelecionado = lugaresFiltrados[position];
                 pesquisaDAO.inserir(lugarSelecionado.getNome());
 				Intent intent = new Intent(PesquisaActivity.this, DetalheActivity.class);

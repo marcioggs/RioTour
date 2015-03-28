@@ -16,6 +16,7 @@ public abstract class LugarDTO implements ClusterItem,Serializable {
 	private double longitude;
 	private int icone;
 	private String tipo;
+	private double indSimilaridadePesquisa;
 
 	@Override
 	public LatLng getPosition() {
@@ -80,4 +81,11 @@ public abstract class LugarDTO implements ClusterItem,Serializable {
 		this.tipo = tipo;
 	}
 
+	public double getIndSimilaridadePesquisa() {
+		return indSimilaridadePesquisa;
+	}
+
+	public void setIndSimilaridadePesquisa(double indSimilaridadePesquisa) {
+		this.indSimilaridadePesquisa = indSimilaridadePesquisa;
+	}
 }

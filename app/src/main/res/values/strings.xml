@@ -15,4 +15,6 @@
     <string name="gps_msg">O GPS não está ativo. Você gostaria de ir as configurações e ativa-lo?</string>
     <string name="cancel">Cancelar</string>
     <string name="settings">Configurações</string>
+    <string name="title_activity_pesquisa">Pesquisa</string>
+    <string name="pesquisa_title">Pesquisar lugares</string>
 </resources>

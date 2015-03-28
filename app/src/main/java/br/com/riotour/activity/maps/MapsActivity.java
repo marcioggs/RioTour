@@ -25,10 +25,12 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 import br.com.riotour.R;
 import br.com.riotour.activity.detalhe.DetalheActivity;
+import br.com.riotour.activity.pesquisa.PesquisaActivity;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.facade.LugarFacade;
 import br.com.riotour.facade.LugarFacadeImpl;
@@ -40,11 +42,7 @@ public class MapsActivity extends ActionBarActivity {
 	//TODO: Trocar ícone do marcador selecionado.
 	//TODO: Manter a posição quando mudar de orientação.
     //TODO: Atualizar materialdrawer foi utilizada uma versão anterior que o botao sanduiche funcionava
-    //TODO: Desenvolver Activity de Pesquisa
     //TODO: Desenvolver Activity de Pesquisas anteriores
-    //TODO: Trocar botão de localização por um no padrão Material Design
-    //TODO: Trocar cores para azul RJ
-    //TODO: Alterar icone do ponto turistico para uma camera
     //TODO: Desenvolver Activity de Sobre
     //TODO: Adicionar rota do google maps nos detalhes do local.
 
@@ -96,8 +94,7 @@ public class MapsActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         if ( position == 1 ){
-                            Toast.makeText(MapsActivity.this, "Activity de pesquisa", Toast.LENGTH_SHORT)
-                                    .show();
+	                        iniciarPesquisa();
                         }
                     }
                 })
@@ -117,13 +114,22 @@ public class MapsActivity extends ActionBarActivity {
                     result.openDrawer();
                 return true;
             case R.id.menu_search:
-                Toast.makeText(MapsActivity.this, "Activity de pesquisa", Toast.LENGTH_SHORT)
-                        .show();
+	            iniciarPesquisa();
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-    @Override
+
+	/**
+	 * Inicia a activity de pesquisa.
+	 */
+	private void iniciarPesquisa() {
+		Intent intent = new Intent(MapsActivity.this, PesquisaActivity.class);
+		intent.putExtra(PesquisaActivity.LUGARES_KEY, (HashSet) lugares);
+		startActivity(intent);
+	}
+
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_map, menu);
         return true;

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -16,13 +18,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 import br.com.riotour.R;
+import br.com.riotour.activity.detalhe.DetalheActivity;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.util.levenshteindistance.LevenshteinDistance;
 
 public class PesquisaActivity extends ActionBarActivity {
 
 	public static final String LUGARES_KEY = "lugares";
+
 	private Set<LugarDTO> lugares;
+	private LugarDTO[] lugaresFiltrados;
+	private ListView resultados;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +36,9 @@ public class PesquisaActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_pesquisa);
 
 		lugares = (HashSet<LugarDTO>) getIntent().getSerializableExtra(LUGARES_KEY);
+
 		configurarViewPesquisa();
+		configurarViewResultados();
 	}
 
 	/**
@@ -43,6 +51,24 @@ public class PesquisaActivity extends ActionBarActivity {
 		searchView.setIconifiedByDefault(false);
 	}
 
+	/**
+	 * Configura a view de resultados.
+	 */
+	private void configurarViewResultados() {
+		resultados = (ListView) findViewById(R.id.campo_resultado_pesquisa);
+
+		resultados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				LugarDTO lugarSelecionado = lugaresFiltrados[position];
+
+				Intent intent = new Intent(PesquisaActivity.this, DetalheActivity.class);
+				intent.putExtra(DetalheActivity.LUGAR_KEY, lugarSelecionado);
+				startActivity(intent);
+			}
+		});
+	}
+
 	@Override
 	protected void onNewIntent(Intent intent) {
 		String query = intent.getStringExtra(SearchManager.QUERY);
@@ -50,12 +76,11 @@ public class PesquisaActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * Realzia a pesquisa pela query informada.
+	 * Realiza a pesquisa pela query informada.
 	 * @param query Query
 	 */
 	private void pesquisar(final String query) {
-		LugarDTO[] lugaresFiltrados = filtrarResultados(query);
-		ListView resultados = (ListView) findViewById(R.id.campo_resultado_pesquisa);
+		lugaresFiltrados = filtrarResultados(query);
 		resultados.setAdapter(new ResultadoPesquisaAdapter(this, lugaresFiltrados));
 	}
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.riotour.R;
@@ -38,7 +39,8 @@ public class ResultadoPesquisaAdapter extends ArrayAdapter<LugarDTO> {
 			linha = inflater.inflate(layoutResourceId, parent, false);
 
 			holder = new LugarHolder();
-			holder.nomeLugar = (TextView) linha.findViewById(R.id.nome_lugar);
+			holder.icone = (ImageView) linha.findViewById(R.id.icone_lugar);
+			holder.nome = (TextView) linha.findViewById(R.id.nome_lugar);
 
 			linha.setTag(holder);
 		} else {
@@ -46,12 +48,14 @@ public class ResultadoPesquisaAdapter extends ArrayAdapter<LugarDTO> {
 		}
 
 		LugarDTO lugar = lugares[position];
-		holder.nomeLugar.setText(lugar.getNome());
+		holder.icone.setImageResource(lugar.getIcone());
+		holder.nome.setText(lugar.getNome());
 
 		return linha;
 	}
 
 	static class LugarHolder {
-		TextView nomeLugar;
+		ImageView icone;
+		TextView nome;
 	}
 }

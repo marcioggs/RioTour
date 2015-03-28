@@ -182,7 +182,7 @@ public class MapsActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
                 Intent intent = new Intent(MapsActivity.this, DetalheActivity.class);
-                intent.putExtra("lugar", lugarSelecionado);
+                intent.putExtra(DetalheActivity.LUGAR_KEY, lugarSelecionado);
 				startActivity(intent);
 			}
 		});

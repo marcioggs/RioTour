@@ -7,7 +7,7 @@
     <View
         android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="47dp" />
 
     <SearchView
         android:id="@+id/campo_pesquisa"

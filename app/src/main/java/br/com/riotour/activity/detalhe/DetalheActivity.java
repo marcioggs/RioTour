@@ -19,6 +19,8 @@ import br.com.riotour.dto.PraiaDTO;
 
 public class DetalheActivity extends ActionBarActivity {
 
+	public static final String LUGAR_KEY = "lugar";
+
 	//TODO: Trocar nomes por ícones? (Ex: Ícone de email)
 	//TODO: Pegar imagem do Google imagens quando não tiver?
 	//TODO: Colocar botão de voltar na action bar.
@@ -31,7 +33,7 @@ public class DetalheActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalhe);
 
-		LugarDTO lugar = (LugarDTO) getIntent().getSerializableExtra("lugar");
+		LugarDTO lugar = (LugarDTO) getIntent().getSerializableExtra(LUGAR_KEY);
 
 		TextView nomeLugar = (TextView) findViewById(R.id.nome_lugar);
 		ImageView iconeLugar = (ImageView) findViewById(R.id.icone_lugar);

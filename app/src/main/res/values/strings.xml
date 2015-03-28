@@ -17,4 +17,18 @@
     <string name="settings">Configurações</string>
     <string name="title_activity_pesquisa">Pesquisa</string>
     <string name="pesquisa_title">Pesquisar lugares</string>
+    <string name="campo_endereco">Endereço:</string>
+    <string name="campo_fax">Fax:</string>
+    <string name="campo_email">E-mail:</string>
+    <string name="campo_categoria">Categoria:</string>
+    <string name="campo_qtd_acomodacoes_cadeirantes">Qtd. acomodações cadeirantes:</string>
+    <string name="campo_qtd_acomodacoes_cao_guia">Qtd. acomodações cão guia:</string>
+    <string name="campo_telefone_para_surdos">Telefone para surdos:</string>
+    <string name="campo_telefone">Telefone:</string>
+    <string name="campo_cnpj">CNPJ:</string>
+    <string name="campo_idiomas_falados">Idiomas falados:</string>
+    <string name="campo_historico">Histórico:</string>
+    <string name="campo_autor">Autor:</string>
+    <string name="campo_inauguracao">Inauguração:</string>
+    <string name="campo_localizacao">Localização:</string>
 </resources>

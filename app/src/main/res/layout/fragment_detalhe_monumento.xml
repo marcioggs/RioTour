@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
+              android:layout_marginLeft="10dp"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
@@ -14,10 +15,11 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Histórico:"
+            android:text="@string/campo_historico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
@@ -29,10 +31,11 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Autor:"
+            android:text="@string/campo_autor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
@@ -44,10 +47,11 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Inauguração:"
+            android:text="@string/campo_inauguracao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
@@ -59,10 +63,11 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Localização:"
+            android:text="@string/campo_localizacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView

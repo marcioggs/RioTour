@@ -1,14 +1,19 @@
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="AppTheme" parent="AppTheme.Base">
-    </style>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="AppTheme.Base"></style>
+
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/light_blue</item>
         <item name="colorPrimaryDark">@color/blue</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColor">@color/dark_gray</item>
-
+        <item name="actionBarStyle">@style/MyActionBarStyle</item>
     </style>
 
+    <style name="MyActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="titleTextStyle">@style/MyTitleTextStyle</item>
+    </style>
 
+    <style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
 
 </resources>

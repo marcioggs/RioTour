@@ -20,6 +20,7 @@ import java.util.Set;
 
 import br.com.riotour.R;
 import br.com.riotour.activity.detalhe.DetalheActivity;
+import br.com.riotour.dao.PesquisaDAO;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.util.levenshteindistance.LevenshteinDistance;
 
@@ -30,6 +31,7 @@ public class PesquisaActivity extends ActionBarActivity {
 	private Set<LugarDTO> lugares;
 	private LugarDTO[] lugaresFiltrados;
 	private ListView resultados;
+    private PesquisaDAO pesquisaDAO;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class PesquisaActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		lugares = (HashSet<LugarDTO>) getIntent().getSerializableExtra(LUGARES_KEY);
+        pesquisaDAO = new PesquisaDAO(this);
 
 		configurarViewPesquisa();
 		configurarViewResultados();
@@ -66,6 +69,7 @@ public class PesquisaActivity extends ActionBarActivity {
 			@Override
 			public boolean onQueryTextSubmit(String query) {
 				//TODO: Salvar em pesquisas recentes.
+                pesquisaDAO.inserir(query);
 				return false;
 			}
 
@@ -88,7 +92,7 @@ public class PesquisaActivity extends ActionBarActivity {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				//TODO: Salvar em pesquisas recentes.
 				LugarDTO lugarSelecionado = lugaresFiltrados[position];
-
+                pesquisaDAO.inserir(lugarSelecionado.getNome());
 				Intent intent = new Intent(PesquisaActivity.this, DetalheActivity.class);
 				intent.putExtra(DetalheActivity.LUGAR_KEY, lugarSelecionado);
 				startActivity(intent);

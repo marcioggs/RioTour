@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_marginLeft="10dp"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/campo_foto_monumento"
@@ -14,67 +14,75 @@
         tools:src="@drawable/monumento" />
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_historico"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_historico" />
+
         <TextView
             android:id="@+id/campo_historico"
-            tools:text="Esculpido em 1900"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="Esculpido em 1900" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_autor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_autor" />
+
         <TextView
             android:id="@+id/campo_autor"
-            tools:text="João"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="João" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_inauguracao"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_inauguracao" />
+
         <TextView
             android:id="@+id/campo_inauguracao"
-            tools:text="01/01/2000"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="01/01/2000" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_localizacao"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_localizacao" />
+
         <TextView
             android:id="@+id/campo_localizacao"
-            tools:text="Ao lado do metrô"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="Ao lado do metrô" />
     </LinearLayout>
 
 </LinearLayout>

@@ -13,20 +13,20 @@ import br.com.riotour.dto.LugarDTO;
 
 public class LugarRenderer extends DefaultClusterRenderer<LugarDTO> {
 
-	public LugarRenderer(Context context, GoogleMap map, ClusterManager<LugarDTO> clusterManager) {
-		super(context, map, clusterManager);
-	}
+    public LugarRenderer(Context context, GoogleMap map, ClusterManager<LugarDTO> clusterManager) {
+        super(context, map, clusterManager);
+    }
 
-	@Override
-	protected void onBeforeClusterItemRendered(LugarDTO lugar,
-	                                           MarkerOptions markerOptions) {
-		markerOptions
-				.icon(BitmapDescriptorFactory.fromResource(lugar.getIcone()))
-				.title(lugar.getNome());
-	}
+    @Override
+    protected void onBeforeClusterItemRendered(LugarDTO lugar,
+                                               MarkerOptions markerOptions) {
+        markerOptions
+                .icon(BitmapDescriptorFactory.fromResource(lugar.getIcone()))
+                .title(lugar.getNome());
+    }
 
-	@Override
-	protected boolean shouldRenderAsCluster(Cluster<LugarDTO> cluster) {
-		return cluster.getSize() > 5;
-	}
+    @Override
+    protected boolean shouldRenderAsCluster(Cluster<LugarDTO> cluster) {
+        return cluster.getSize() > 5;
+    }
 }

@@ -32,4 +32,6 @@
     <string name="campo_inauguracao">Inauguração:</string>
     <string name="campo_localizacao">Localização:</string>
     <string name="title_activity_pesquisas_recentes">Pesquisas Recentes</string>
+    <string name="pesquisa">Pesquisa</string>
+    <string name="limpar">Limpar</string>
 </resources>

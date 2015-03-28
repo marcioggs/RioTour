@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="br.com.riotour.activity.pesquisa.PesquisaActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.riotour.activity.pesquisa.PesquisaActivity">
 
     <View
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="47dp" />
+        android:layout_height="47dp"
+        android:background="@color/white" />
 
     <SearchView
         android:id="@+id/campo_pesquisa"
@@ -16,7 +16,7 @@
 
     <ListView
         android:id="@+id/campo_resultado_pesquisa"
-        android:layout_below="@id/campo_pesquisa"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:layout_below="@id/campo_pesquisa"></ListView>
 </RelativeLayout>

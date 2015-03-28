@@ -14,9 +14,9 @@ import java.util.List;
  * Created by Michael on 28/03/2015.
  */
 public class PesquisaDAO extends SQLiteOpenHelper {
-    public static final int VERSION  =   1;
-    public static final String TABLE   =   "searched";
-    public static final String DATABASE =   "searches.db";
+    public static final int VERSION = 1;
+    public static final String TABLE = "searched";
+    public static final String DATABASE = "searches.db";
 
 
     public PesquisaDAO(Context context) {
@@ -30,7 +30,7 @@ public class PesquisaDAO extends SQLiteOpenHelper {
         //Definicao do comando para para criar a tabela
         String ddl = "CREATE TABLE " + TABLE + "( "
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                +"search TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)";
+                + "search TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)";
 
         sqLiteDatabase.execSQL(ddl);
     }
@@ -43,7 +43,7 @@ public class PesquisaDAO extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean inserir(String pesquisa){
+    public boolean inserir(String pesquisa) {
 
         ContentValues values = new ContentValues();
         values.put("search", pesquisa);
@@ -63,8 +63,8 @@ public class PesquisaDAO extends SQLiteOpenHelper {
         return list;
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
 
-        getWritableDatabase().execSQL("DELETE FROM " + TABLE );
+        getWritableDatabase().execSQL("DELETE FROM " + TABLE);
     }
 }

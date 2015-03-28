@@ -10,10 +10,11 @@ import br.com.riotour.dto.LugarDTO;
  */
 public interface LugarFacade {
 
-	/**
-	 * Obtém os lugares que serão exibidos no mapa.
-	 * @return Lista de lugares
-	 */
-	Set<LugarDTO> obterLugares() throws IOException;
+    /**
+     * Obtém os lugares que serão exibidos no mapa.
+     *
+     * @return Lista de lugares
+     */
+    Set<LugarDTO> obterLugares() throws IOException;
 
 }

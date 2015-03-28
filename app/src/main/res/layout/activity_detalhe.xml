@@ -4,40 +4,40 @@
     android:layout_height="match_parent"
     tools:context="br.com.riotour.activity.detalhe.DetalheActivity">
 
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/nome_lugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            tools:text="Nome" />
+
+        <ImageView
+            android:id="@+id/icone_lugar"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_alignTop="@id/nome_lugar"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/nome_lugar"
+            tools:src="@drawable/monumento" />
+
+        <ImageView
+            android:id="@+id/mapa_lugar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="120dp"
+            android:layout_below="@+id/nome_lugar"
+            android:layout_marginTop="12dp"
+            tools:src="@drawable/monumento" />
 
-            <TextView
-                android:id="@+id/nome_lugar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:textSize="24sp"
-                tools:text="Nome" />
-
-            <ImageView
-                android:id="@+id/icone_lugar"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_alignTop="@id/nome_lugar"
-                android:layout_toLeftOf="@id/nome_lugar"
-                android:layout_marginRight="10dp"
-                tools:src="@drawable/monumento" />
-
-            <ImageView
-                android:id="@+id/mapa_lugar"
-                android:layout_marginTop="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_below="@+id/nome_lugar"
-                tools:src="@drawable/monumento" />
-
-            <RelativeLayout
-                android:id="@+id/fragmentDetalhe"
-                android:layout_below="@+id/mapa_lugar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/fragmentDetalhe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/mapa_lugar" />
+    </RelativeLayout>
 </ScrollView>

@@ -1,178 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_marginLeft="10dp"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_endereco"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_endereco" />
+
         <TextView
             android:id="@+id/campo_endereco"
-            tools:text="Endereço"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="Endereço" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_fax"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_fax" />
+
         <TextView
             android:id="@+id/campo_fax"
-            tools:text="(99) 9999-9999"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="(99) 9999-9999" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_email"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_email" />
+
         <TextView
             android:id="@+id/campo_email"
-            tools:text="endereco@email.com"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="endereco@email.com" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_categoria"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_categoria" />
+
         <RatingBar
             android:id="@+id/campo_categoria_rating"
             style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:isIndicator="true"
             android:numStars="5"
-            tools:rating="4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            tools:rating="4" />
+
         <TextView
             android:id="@+id/campo_categoria_texto"
-            android:visibility="gone"
-            tools:text="Flat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:text="Flat" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_qtd_acomodacoes_cadeirantes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_qtd_acomodacoes_cadeirantes" />
+
         <TextView
             android:id="@+id/campo_qtd_acomodacoes_cadeirantes"
-            tools:text="7"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="7" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_qtd_acomodacoes_cao_guia"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_qtd_acomodacoes_cao_guia" />
+
         <TextView
             android:id="@+id/campo_qtd_acomodacoes_cao_guia"
-            tools:text="3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="3" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_telefone_para_surdos"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_telefone_para_surdos" />
+
         <TextView
             android:id="@+id/campo_telefone_para_surdos"
-            tools:text="(88) 8888-8888"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="(88) 8888-8888" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_telefone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_telefone" />
+
         <TextView
             android:id="@+id/campo_telefone"
-            tools:text="(77) 7777-7777"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="(77) 7777-7777" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_cnpj"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_cnpj" />
+
         <TextView
             android:id="@+id/campo_cnpj"
-            tools:text="63.641.529/0001-04"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="63.641.529/0001-04" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/campo_idiomas_falados"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/campo_idiomas_falados" />
+
         <TextView
             android:id="@+id/campo_idiomas_falados"
-            tools:text="Português, Inglês"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="Português, Inglês" />
     </LinearLayout>
 
 </LinearLayout>

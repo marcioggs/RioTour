@@ -14,29 +14,30 @@ import br.com.riotour.dto.LugarDTO;
  * Classe responsável pelas regras de negócio dos lugares.
  */
 public class LugarFacadeImpl implements LugarFacade {
-	Context ctx;
-	LugarDAO dao;
+    Context ctx;
+    LugarDAO dao;
 
-	/**
-	 * Construtor.
-	 * @param ctx Contexto
-	 */
-	public LugarFacadeImpl(Context ctx) {
-		this.ctx = ctx;
-		dao = new LugarDAOImpl(ctx);
-	}
+    /**
+     * Construtor.
+     *
+     * @param ctx Contexto
+     */
+    public LugarFacadeImpl(Context ctx) {
+        this.ctx = ctx;
+        dao = new LugarDAOImpl(ctx);
+    }
 
-	@Override
-	public Set<LugarDTO> obterLugares() throws IOException {
-		Set<LugarDTO> lugares = new HashSet<>();
+    @Override
+    public Set<LugarDTO> obterLugares() throws IOException {
+        Set<LugarDTO> lugares = new HashSet<>();
 
-		lugares.addAll(dao.obterPontosTuristicos());
-		lugares.addAll(dao.obterHoteis());
-		lugares.addAll(dao.obterMonumentos());
-		lugares.addAll(dao.obterMuseus());
-		lugares.addAll(dao.obterPraias());
+        lugares.addAll(dao.obterPontosTuristicos());
+        lugares.addAll(dao.obterHoteis());
+        lugares.addAll(dao.obterMonumentos());
+        lugares.addAll(dao.obterMuseus());
+        lugares.addAll(dao.obterPraias());
 
-		return lugares;
-	}
+        return lugares;
+    }
 
 }

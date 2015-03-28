@@ -1,8 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:riotour="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/menu_clear"
-        android:title="Limpar"
+    <item
+        android:id="@+id/menu_clear"
+        android:icon="@android:drawable/ic_menu_delete"
         android:orderInCategory="10"
-        riotour:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_delete" />
+        android:title="@string/limpar"
+        riotour:showAsAction="always" />
 </menu>

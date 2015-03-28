@@ -15,46 +15,47 @@ import br.com.riotour.dto.MonumentoDTO;
 
 public class DetalheMonumentoFragment extends Fragment {
 
-	public static final String KEY_LUGAR = "lugar";
-	private MonumentoDTO lugar;
+    public static final String KEY_LUGAR = "lugar";
+    private MonumentoDTO lugar;
 
-	/**
-	 * Obtém a instância do fragmento com os parãmetros configurados.
-	 * @param m Monumento
-	 * @return Fragment
-	 */
-	public static DetalheMonumentoFragment newInstance(MonumentoDTO m) {
-		DetalheMonumentoFragment f = new DetalheMonumentoFragment();
+    /**
+     * Obtém a instância do fragmento com os parãmetros configurados.
+     *
+     * @param m Monumento
+     * @return Fragment
+     */
+    public static DetalheMonumentoFragment newInstance(MonumentoDTO m) {
+        DetalheMonumentoFragment f = new DetalheMonumentoFragment();
 
-		Bundle args = new Bundle();
-		args.putSerializable(KEY_LUGAR, m);
-		f.setArguments(args);
+        Bundle args = new Bundle();
+        args.putSerializable(KEY_LUGAR, m);
+        f.setArguments(args);
 
-		return f;
-	}
+        return f;
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		lugar = (MonumentoDTO) getArguments().getSerializable(KEY_LUGAR);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        lugar = (MonumentoDTO) getArguments().getSerializable(KEY_LUGAR);
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_detalhe_monumento, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_detalhe_monumento, container, false);
 
-		ImageView campoFotoMonumento = (ImageView) v.findViewById(R.id.campo_foto_monumento);
-		TextView campoHistorico = (TextView) v.findViewById(R.id.campo_historico);
-		TextView campoAutor = (TextView) v.findViewById(R.id.campo_autor);
-		TextView campoInauguracao = (TextView) v.findViewById(R.id.campo_inauguracao);
-		TextView campoLocalizacao = (TextView) v.findViewById(R.id.campo_localizacao);
+        ImageView campoFotoMonumento = (ImageView) v.findViewById(R.id.campo_foto_monumento);
+        TextView campoHistorico = (TextView) v.findViewById(R.id.campo_historico);
+        TextView campoAutor = (TextView) v.findViewById(R.id.campo_autor);
+        TextView campoInauguracao = (TextView) v.findViewById(R.id.campo_inauguracao);
+        TextView campoLocalizacao = (TextView) v.findViewById(R.id.campo_localizacao);
 
-		Picasso.with(getActivity()).load(lugar.getUrlFoto()).into(campoFotoMonumento);
-		campoHistorico.setText(lugar.getHistorico());
-		campoAutor.setText(lugar.getAutor());
-		campoInauguracao.setText(lugar.getInauguracao());
-		campoLocalizacao.setText(lugar.getLocalizacao());
+        Picasso.with(getActivity()).load(lugar.getUrlFoto()).into(campoFotoMonumento);
+        campoHistorico.setText(lugar.getHistorico());
+        campoAutor.setText(lugar.getAutor());
+        campoInauguracao.setText(lugar.getInauguracao());
+        campoLocalizacao.setText(lugar.getLocalizacao());
 
-		return v;
-	}
+        return v;
+    }
 }

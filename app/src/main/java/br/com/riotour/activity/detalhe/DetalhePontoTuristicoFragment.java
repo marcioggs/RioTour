@@ -12,47 +12,48 @@ import br.com.riotour.dto.PontoTuristicoDTO;
 
 public class DetalhePontoTuristicoFragment extends Fragment {
 
-	public static final String KEY_LUGAR = "lugar";
-	private PontoTuristicoDTO lugar;
+    public static final String KEY_LUGAR = "lugar";
+    private PontoTuristicoDTO lugar;
 
-	/**
-	 * Obtém a instância do fragmento com os parãmetros configurados.
-	 * @param p Ponto turístico
-	 * @return Fragment
-	 */
-	public static DetalhePontoTuristicoFragment newInstance(PontoTuristicoDTO p) {
-		DetalhePontoTuristicoFragment f = new DetalhePontoTuristicoFragment();
+    /**
+     * Obtém a instância do fragmento com os parãmetros configurados.
+     *
+     * @param p Ponto turístico
+     * @return Fragment
+     */
+    public static DetalhePontoTuristicoFragment newInstance(PontoTuristicoDTO p) {
+        DetalhePontoTuristicoFragment f = new DetalhePontoTuristicoFragment();
 
-		Bundle args = new Bundle();
-		args.putSerializable(KEY_LUGAR, p);
-		f.setArguments(args);
+        Bundle args = new Bundle();
+        args.putSerializable(KEY_LUGAR, p);
+        f.setArguments(args);
 
-		return f;
-	}
+        return f;
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		lugar = (PontoTuristicoDTO) getArguments().getSerializable(KEY_LUGAR);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        lugar = (PontoTuristicoDTO) getArguments().getSerializable(KEY_LUGAR);
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_detalhe_ponto_turistico, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_detalhe_ponto_turistico, container, false);
 
-		TextView campoEndereco = (TextView) v.findViewById(R.id.campo_endereco);
-		TextView campoTelefone = (TextView) v.findViewById(R.id.campo_telefone);
+        TextView campoEndereco = (TextView) v.findViewById(R.id.campo_endereco);
+        TextView campoTelefone = (TextView) v.findViewById(R.id.campo_telefone);
 
-        StringBuffer endereco = new  StringBuffer();
+        StringBuffer endereco = new StringBuffer();
         endereco.append(lugar.getEndereco());
-        if(!lugar.getNumero().isEmpty())
+        if (!lugar.getNumero().isEmpty())
             endereco.append(", " + lugar.getNumero());
-        if(!lugar.getBairro().isEmpty())
+        if (!lugar.getBairro().isEmpty())
             endereco.append(" - " + lugar.getBairro());
 
-		campoEndereco.setText(endereco);
-		campoTelefone.setText(lugar.getTelefone());
+        campoEndereco.setText(endereco);
+        campoTelefone.setText(lugar.getTelefone());
 
-		return v;
-	}
+        return v;
+    }
 }

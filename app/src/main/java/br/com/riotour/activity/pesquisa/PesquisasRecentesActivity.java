@@ -1,8 +1,8 @@
 package br.com.riotour.activity.pesquisa;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,23 +10,33 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import br.com.riotour.R;
-import br.com.riotour.activity.detalhe.DetalheActivity;
 import br.com.riotour.dao.PesquisaDAO;
 import br.com.riotour.dto.LugarDTO;
 
 
 public class PesquisasRecentesActivity extends ActionBarActivity {
 
+    public static final String LUGARES_KEY = "lugares";
+    public static final String PESQUISA_KEY = "pesquisa";
+
+    private ArrayAdapter<String> adapter;
+    private List<String> pesquisas;
     private PesquisaDAO pesquisaDAO;
-    private ListView pesquisas;
-    ArrayAdapter<String> adapter;
+    private ListView listViewPesquisas;
+    private Set<LugarDTO> lugares;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesquisas_recentes);
+        lugares = (HashSet<LugarDTO>) getIntent().getSerializableExtra(LUGARES_KEY);
         pesquisaDAO = new PesquisaDAO(this);
+        pesquisas = pesquisaDAO.queryPesquisa();
         configurarViewPesquisas();
 
     }
@@ -58,17 +68,29 @@ public class PesquisasRecentesActivity extends ActionBarActivity {
      * Configura a view de resultados.
      */
     private void configurarViewPesquisas() {
-        pesquisas = (ListView) findViewById(R.id.list_view_pesquisas);
+        listViewPesquisas = (ListView) findViewById(R.id.list_view_pesquisas);
+
         adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, pesquisaDAO.queryPesquisa());
+                android.R.layout.simple_list_item_1, android.R.id.text1, pesquisas);
 
-        pesquisas.setAdapter(adapter);
+        listViewPesquisas.setAdapter(adapter);
 
-        pesquisas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewPesquisas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //TODO: chama activity de pesquisa passando a pesquisa
+                iniciarPesquisa(pesquisas.get(position));
             }
         });
+    }
+
+    /**
+     * Inicia a activity de pesquisa.
+     */
+    private void iniciarPesquisa(String pesquisa) {
+        Intent intent = new Intent(PesquisasRecentesActivity.this, PesquisaActivity.class);
+        intent.putExtra(PesquisasRecentesActivity.PESQUISA_KEY, pesquisa);
+        intent.putExtra(PesquisasRecentesActivity.LUGARES_KEY, (HashSet) lugares);
+        startActivity(intent);
     }
 }

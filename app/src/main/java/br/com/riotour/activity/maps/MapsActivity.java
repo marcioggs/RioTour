@@ -38,43 +38,40 @@ import br.com.riotour.facade.LugarFacadeImpl;
 
 public class MapsActivity extends ActionBarActivity {
 
-	//TODO: Trocar ícone do cluster.
-	//TODO: Trocar ícone do marcador selecionado.
-	//TODO: Manter a posição quando mudar de orientação.
+    //TODO: Trocar ícone do cluster.
+    //TODO: Trocar ícone do marcador selecionado.
+    //TODO: Manter a posição quando mudar de orientação.
     //TODO: Atualizar materialdrawer foi utilizada uma versão anterior que o botao sanduiche funcionava
-    //TODO: Desenvolver Activity de Pesquisas anteriores
     //TODO: Desenvolver Activity de Sobre
     //TODO: Adicionar rota do google maps nos detalhes do local.
 
-	private GoogleMap mapa;
-	private Set<LugarDTO> lugares;
-	private ClusterManager<LugarDTO> clusterManager;
-
-	private static final LatLng POS_RJ = new LatLng(-22.9068467, -43.1728965);
-	private static final float ZOOM_RJ = 13f;
-
-	//Objetos usados na view de detalhe
-	private View detalhe;
-	private ImageView icone;
-	private TextView tipo;
-	private TextView nome;
-	private ImageView botaoInfo;
+    private static final LatLng POS_RJ = new LatLng(-22.9068467, -43.1728965);
+    private static final float ZOOM_RJ = 13f;
+    private GoogleMap mapa;
+    private Set<LugarDTO> lugares;
+    private ClusterManager<LugarDTO> clusterManager;
+    //Objetos usados na view de detalhe
+    private View detalhe;
+    private ImageView icone;
+    private TextView tipo;
+    private TextView nome;
+    private ImageView botaoInfo;
     private LugarDTO lugarSelecionado;
     private ImageButton getCurrentLocation;
     private GPSTracker gps;
     private Drawer.Result result = null;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_maps);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_maps);
 
         configurarDrawer();
-		configurarViewDetalhe();
-		obterLugares();
-		configurarMapa();
+        configurarViewDetalhe();
+        obterLugares();
+        configurarMapa();
         configurarObtemPosicao();
-	}
+    }
 
     private void configurarDrawer() {
 
@@ -93,9 +90,10 @@ public class MapsActivity extends ActionBarActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        if ( position == 1 ){
-	                        iniciarPesquisa();
-                        }if ( position == 2 ){
+                        if (position == 1) {
+                            iniciarPesquisa();
+                        }
+                        if (position == 2) {
                             iniciarPesquisasAnteriores();
                         }
                     }
@@ -107,7 +105,7 @@ public class MapsActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
-	/**
+    /**
      * Inicia a activity de pesquisa.
      */
     private void iniciarPesquisa() {
@@ -121,7 +119,7 @@ public class MapsActivity extends ActionBarActivity {
      */
     private void iniciarPesquisasAnteriores() {
         Intent intent = new Intent(MapsActivity.this, PesquisasRecentesActivity.class);
-
+        intent.putExtra(PesquisasRecentesActivity.LUGARES_KEY, (HashSet) lugares);
         startActivity(intent);
     }
 
@@ -135,7 +133,7 @@ public class MapsActivity extends ActionBarActivity {
                     result.openDrawer();
                 return true;
             case R.id.menu_search:
-	            iniciarPesquisa();
+                iniciarPesquisa();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -157,12 +155,12 @@ public class MapsActivity extends ActionBarActivity {
                 gps = new GPSTracker(MapsActivity.this);
 
                 // Verifica se o GPS esta habilitado
-                if(gps.canGetLocation()){
+                if (gps.canGetLocation()) {
 
                     //Toast.makeText(getApplicationContext(), "Sua localização é - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
                     mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(gps.getLatitude(), gps.getLongitude()), mapa.getCameraPosition().zoom + 2));
                     gps.stopUsingGPS();
-                }else{
+                } else {
                     // Não conseguiu pegar a localização
                     // GPS or Network não esta habilitada
                     // Pedir para usuário habulitar GPS/Network nas configurações
@@ -175,89 +173,89 @@ public class MapsActivity extends ActionBarActivity {
     }
 
     @Override
-	protected void onResume() {
-		super.onResume();
-		configurarMapa();
-	}
+    protected void onResume() {
+        super.onResume();
+        configurarMapa();
+    }
 
-	/**
-	 * Configura a view de detalhe.
-	 */
-	private void configurarViewDetalhe() {
-		detalhe = findViewById(R.id.detalhe);
-		icone = (ImageView) findViewById(R.id.icone_lugar);
-		tipo = (TextView) findViewById(R.id.tipo_lugar);
-		nome = (TextView) findViewById(R.id.nome_lugar);
+    /**
+     * Configura a view de detalhe.
+     */
+    private void configurarViewDetalhe() {
+        detalhe = findViewById(R.id.detalhe);
+        icone = (ImageView) findViewById(R.id.icone_lugar);
+        tipo = (TextView) findViewById(R.id.tipo_lugar);
+        nome = (TextView) findViewById(R.id.nome_lugar);
 
-		detalhe.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+        detalhe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(MapsActivity.this, DetalheActivity.class);
                 intent.putExtra(DetalheActivity.LUGAR_KEY, lugarSelecionado);
-				startActivity(intent);
-			}
-		});
-	}
+                startActivity(intent);
+            }
+        });
+    }
 
-	/**
-	 * Obtém os lugares.
-	 */
-	private void obterLugares() {
-		LugarFacade facade = new LugarFacadeImpl(getApplicationContext());
+    /**
+     * Obtém os lugares.
+     */
+    private void obterLugares() {
+        LugarFacade facade = new LugarFacadeImpl(getApplicationContext());
 
-		try {
-			lugares = facade.obterLugares();
-		} catch (IOException e) {
-			Toast.makeText(MapsActivity.this, getString(R.string.error_reading_file), Toast.LENGTH_SHORT)
-					.show();
-		}
-	}
+        try {
+            lugares = facade.obterLugares();
+        } catch (IOException e) {
+            Toast.makeText(MapsActivity.this, getString(R.string.error_reading_file), Toast.LENGTH_SHORT)
+                    .show();
+        }
+    }
 
-	/**
-	 * Configura o mapa.
-	 */
+    /**
+     * Configura o mapa.
+     */
     private void configurarMapa() {
         if (mapa == null) {
             mapa = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 
-	        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(POS_RJ, ZOOM_RJ));
+            mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(POS_RJ, ZOOM_RJ));
 
-	        clusterManager = new ClusterManager<>(this, mapa);
-	        clusterManager.setRenderer(new LugarRenderer(getApplicationContext(), mapa, clusterManager));
-	        mapa.setOnCameraChangeListener(clusterManager);
-	        mapa.setOnMarkerClickListener(clusterManager);
-	        mapa.setOnInfoWindowClickListener(clusterManager);
-	        mapa.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-		        @Override
-		        public void onMapClick(LatLng latLng) {
-			        detalhe.setVisibility(View.GONE);
-		        }
-	        });
+            clusterManager = new ClusterManager<>(this, mapa);
+            clusterManager.setRenderer(new LugarRenderer(getApplicationContext(), mapa, clusterManager));
+            mapa.setOnCameraChangeListener(clusterManager);
+            mapa.setOnMarkerClickListener(clusterManager);
+            mapa.setOnInfoWindowClickListener(clusterManager);
+            mapa.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+                    detalhe.setVisibility(View.GONE);
+                }
+            });
 
-			clusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<LugarDTO>() {
-				@Override
-				public boolean onClusterClick(Cluster<LugarDTO> lugarCluster) {
-					mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(lugarCluster.getPosition(), mapa.getCameraPosition().zoom + 2));
-					return true;
-				 }
-			});
+            clusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<LugarDTO>() {
+                @Override
+                public boolean onClusterClick(Cluster<LugarDTO> lugarCluster) {
+                    mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(lugarCluster.getPosition(), mapa.getCameraPosition().zoom + 2));
+                    return true;
+                }
+            });
 
-			clusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<LugarDTO>() {
-				@Override
-				public boolean onClusterItemClick(LugarDTO lugar) {
-					mapa.animateCamera(CameraUpdateFactory.newLatLng(lugar.getPosition()));
+            clusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<LugarDTO>() {
+                @Override
+                public boolean onClusterItemClick(LugarDTO lugar) {
+                    mapa.animateCamera(CameraUpdateFactory.newLatLng(lugar.getPosition()));
 
-					detalhe.setVisibility(View.VISIBLE);
-					icone.setImageResource(lugar.getIcone());
-					tipo.setText(lugar.getTipo());
-					nome.setText(lugar.getNome());
+                    detalhe.setVisibility(View.VISIBLE);
+                    icone.setImageResource(lugar.getIcone());
+                    tipo.setText(lugar.getTipo());
+                    nome.setText(lugar.getNome());
                     lugarSelecionado = lugar;
-					return true;
-				}
-			});
+                    return true;
+                }
+            });
 
-			clusterManager.addItems(lugares);
-			clusterManager.cluster();
+            clusterManager.addItems(lugares);
+            clusterManager.cluster();
         }
     }
 

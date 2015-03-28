@@ -37,7 +37,6 @@ import br.com.riotour.facade.LugarFacadeImpl;
 
 public class MapsActivity extends ActionBarActivity {
 
-	//TODO: Colocar strings em arquivo.
 	//TODO: Trocar ícone do cluster.
 	//TODO: Trocar ícone do marcador selecionado.
 	//TODO: Manter a posição quando mudar de orientação.

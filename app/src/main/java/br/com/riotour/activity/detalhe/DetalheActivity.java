@@ -3,7 +3,9 @@ package br.com.riotour.activity.detalhe;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,15 +25,14 @@ public class DetalheActivity extends ActionBarActivity {
 
 	//TODO: Trocar nomes por ícones? (Ex: Ícone de email)
 	//TODO: Pegar imagem do Google imagens quando não tiver?
-	//TODO: Colocar botão de voltar na action bar.
 	//TODO: Criar intent para permitir telefonar para os números da app.
 	//TODO: Criar intent para permitir enviar email para os emails da app.
-	//TODO: Colocar imagem estática do mapa apenas com o lugar selecionado no tipo da tela.
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalhe);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		LugarDTO lugar = (LugarDTO) getIntent().getSerializableExtra(LUGAR_KEY);
 
@@ -58,6 +59,22 @@ public class DetalheActivity extends ActionBarActivity {
 	    }
     }
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
+
+	/**
+	 * Obtém a URL da imagem do mapa estático.
+	 * @param lugar Lugar
+	 * @return URL
+	 */
 	private String obterURLMapaEstatico(LugarDTO lugar) {
 		StringBuffer url = new StringBuffer();
 

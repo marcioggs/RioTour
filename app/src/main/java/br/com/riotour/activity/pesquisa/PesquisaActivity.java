@@ -62,6 +62,19 @@ public class PesquisaActivity extends ActionBarActivity {
 		SearchView searchView = (SearchView) findViewById(R.id.campo_pesquisa);
 		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 		searchView.setIconifiedByDefault(false);
+		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+			@Override
+			public boolean onQueryTextSubmit(String query) {
+				//TODO: Salvar em pesquisas recentes.
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String query) {
+				pesquisar(query);
+				return true;
+			}
+		});
 	}
 
 	/**
@@ -73,6 +86,7 @@ public class PesquisaActivity extends ActionBarActivity {
 		resultados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				//TODO: Salvar em pesquisas recentes.
 				LugarDTO lugarSelecionado = lugaresFiltrados[position];
 
 				Intent intent = new Intent(PesquisaActivity.this, DetalheActivity.class);
@@ -80,12 +94,6 @@ public class PesquisaActivity extends ActionBarActivity {
 				startActivity(intent);
 			}
 		});
-	}
-
-	@Override
-	protected void onNewIntent(Intent intent) {
-		String query = intent.getStringExtra(SearchManager.QUERY);
-		pesquisar(query);
 	}
 
 	/**

@@ -36,11 +36,7 @@
         </activity>
         <activity
             android:name=".activity.pesquisa.PesquisaActivity"
-            android:label="@string/title_activity_pesquisa"
-            android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
+            android:label="@string/title_activity_pesquisa">
             <meta-data android:name="android.app.searchable"
                        android:resource="@xml/searchable"/>
         </activity>

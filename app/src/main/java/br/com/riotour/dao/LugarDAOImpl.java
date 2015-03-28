@@ -20,9 +20,6 @@ import br.com.riotour.util.csv.CsvReader;
  */
 public class LugarDAOImpl implements LugarDAO {
 
-	//TODO: Acertar encoding. Os acentos estão ficando errados.
-	//TODO: Nos arquivos CSV originais, alguns pontos estão sem lat e long, tratar para desconsiderar na aplicação caso baixe os arquivos em tempo de execução.
-
 	Context ctx;
 
 	/**
@@ -148,7 +145,7 @@ public class LugarDAOImpl implements LugarDAO {
 		while (linha != null) {
 			MuseuDTO lugar = new MuseuDTO();
 
-			lugar.setIcone(R.drawable.museu2);
+			lugar.setIcone(R.drawable.camera);
 			lugar.setTipo("Museu");
 			lugar.setNome(linha.get("Nome"));
 			lugar.setEndereco(linha.get("Endereço"));

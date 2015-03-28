@@ -25,12 +25,10 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Set;
 
 import br.com.riotour.R;
 import br.com.riotour.activity.detalhe.DetalheActivity;
-import br.com.riotour.activity.pesquisa.PesquisaActivity;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.facade.LugarFacade;
 import br.com.riotour.facade.LugarFacadeImpl;
@@ -94,7 +92,8 @@ public class MapsActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         if ( position == 1 ){
-	                        iniciarPesquisa();
+                            Toast.makeText(MapsActivity.this, "Activity de pesquisa", Toast.LENGTH_SHORT)
+                                    .show();
                         }
                     }
                 })
@@ -114,22 +113,13 @@ public class MapsActivity extends ActionBarActivity {
                     result.openDrawer();
                 return true;
             case R.id.menu_search:
-	            iniciarPesquisa();
+                Toast.makeText(MapsActivity.this, "Activity de pesquisa", Toast.LENGTH_SHORT)
+                        .show();
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
-	/**
-	 * Inicia a activity de pesquisa.
-	 */
-	private void iniciarPesquisa() {
-		Intent intent = new Intent(MapsActivity.this, PesquisaActivity.class);
-		intent.putExtra(PesquisaActivity.LUGARES_KEY, (HashSet) lugares);
-		startActivity(intent);
-	}
-
-	@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_map, menu);
         return true;

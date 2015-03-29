@@ -26,7 +26,9 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import br.com.riotour.R;
@@ -56,14 +58,14 @@ public class MapsActivity extends ActionBarActivity {
     private ImageView icone;
     private TextView tipo;
     private TextView nome;
-    private ImageView botaoInfo;
     private LugarDTO lugarSelecionado;
     private ImageButton getCurrentLocation;
     private GPSTracker gps;
     private Drawer.Result result = null;
-    private boolean filter_hotel;
+	private Map<String, Boolean> lugaresAtivos;
+	private LugarFacade facade;
 
-    @Override
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -73,6 +75,7 @@ public class MapsActivity extends ActionBarActivity {
         obterLugares();
         configurarMapa();
         configurarObtemPosicao();
+	    configurarLugaresAtivos();
     }
 
     private void configurarDrawer() {
@@ -203,7 +206,7 @@ public class MapsActivity extends ActionBarActivity {
      * Obtém os lugares.
      */
     private void obterLugares() {
-        LugarFacade facade = new LugarFacadeImpl(getApplicationContext());
+	    facade = new LugarFacadeImpl(getApplicationContext());
 
         try {
             lugares = facade.obterLugares();
@@ -261,20 +264,60 @@ public class MapsActivity extends ActionBarActivity {
         }
     }
 
+	/**
+	 * Filtra os lugares a serem exibidos no mapa.
+	 * @param view View
+	 */
+    public void filtrarLugares(View view) {
+        FloatingActionButton botao = (FloatingActionButton) view;
 
-    public void filtrar(View view) {
-        FloatingActionButton button = (FloatingActionButton) view;
-        if (R.id.filter_hotel == view.getId()) {
-            if (!filter_hotel) {
-                button.setActivated(true);
-                button.refreshDrawableState();
-                filter_hotel = true;
-            } else {
-                button.setActivated(false);
-                filter_hotel = false;
-            }
+	    String tipoLugar = null;
 
-        }
+	    switch (view.getId()) {
+		    case R.id.filter_tourist_spot:
+			    tipoLugar = "Ponto Turístico";
+			    break;
+		    case R.id.filter_hotel:
+			    tipoLugar = "Hotel";
+			    break;
+		    case R.id.filter_monument:
+			    tipoLugar = "Monumento";
+			    break;
+		    case R.id.filter_museum:
+			    tipoLugar = "Museu";
+			    break;
+		    case R.id.filter_beach:
+			    tipoLugar = "Praia";
+			    break;
+	    }
 
+	    Boolean exibirLugar = lugaresAtivos.get(tipoLugar);
+	    lugaresAtivos.put(tipoLugar, !exibirLugar);
+	    Set<LugarDTO> lugaresFiltrados = facade.filtrarLugares(lugaresAtivos, lugares);
+
+	    clusterManager.clearItems();
+	    clusterManager.addItems(lugaresFiltrados);
+	    clusterManager.cluster();
+
+	    //TODO: Após trocar a cor não volta mais.
+	   /* if (!exibirLugar) {
+		    botao.setColorNormal(R.color.light_blue);
+	    } else {
+		    botao.setColorNormal(R.color.light_gray);
+	    }*/
     }
+
+	/**
+	 * Configura os lugares ativos.
+	 */
+	private void configurarLugaresAtivos() {
+		lugaresAtivos = new HashMap<>();
+
+		lugaresAtivos.put("Ponto Turístico", true);
+		lugaresAtivos.put("Hotel", true);
+		lugaresAtivos.put("Monumento", true);
+		lugaresAtivos.put("Museu", true);
+		lugaresAtivos.put("Praia", true);
+	}
+
 }

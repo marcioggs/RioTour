@@ -27,7 +27,6 @@ public class DetalheActivity extends ActionBarActivity {
     private LugarDTO lugar;
     //TODO: Trocar nomes por ícones? (Ex: Ícone de email)
     //TODO: Pegar imagem do Google imagens quando não tiver?
-    //TODO: Criar intent para permitir telefonar para os números da app.
     //TODO: Criar intent para permitir enviar email para os emails da app.
 
     @Override

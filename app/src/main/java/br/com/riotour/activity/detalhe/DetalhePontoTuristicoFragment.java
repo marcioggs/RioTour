@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import br.com.riotour.R;
 import br.com.riotour.dto.PontoTuristicoDTO;
+import br.com.riotour.listener.LigarTelefoneClickListener;
 
 public class DetalhePontoTuristicoFragment extends Fragment {
 
@@ -53,6 +54,7 @@ public class DetalhePontoTuristicoFragment extends Fragment {
 
         campoEndereco.setText(endereco);
         campoTelefone.setText(lugar.getTelefone());
+	    campoTelefone.setOnClickListener(new LigarTelefoneClickListener(getActivity()));
 
         return v;
     }

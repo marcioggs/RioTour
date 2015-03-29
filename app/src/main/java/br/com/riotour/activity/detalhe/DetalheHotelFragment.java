@@ -12,6 +12,7 @@ import com.google.common.primitives.Floats;
 
 import br.com.riotour.R;
 import br.com.riotour.dto.HotelDTO;
+import br.com.riotour.listener.LigarTelefoneClickListener;
 
 public class DetalheHotelFragment extends Fragment {
 
@@ -81,10 +82,12 @@ public class DetalheHotelFragment extends Fragment {
         campoQtdAcomodacoesCadeirante.setText(lugar.getQtdAcomodacoesCadeirante());
         campoQtdAcomodacoesCaoGuia.setText(lugar.getQtdAcomodacoesCaoGuia());
         campoTelefoneParaSurdos.setText(lugar.getTelefoneParaSurdos());
+	    campoTelefoneParaSurdos.setOnClickListener(new LigarTelefoneClickListener(getActivity()));
         campoTelefone.setText(lugar.getTelefone());
+	    campoTelefone.setOnClickListener(new LigarTelefoneClickListener(getActivity()));
         campoCnpj.setText(lugar.getCnpj());
         campoIdiomasFalados.setText(lugar.getIdiomasFalados());
 
-        return v;
+	    return v;
     }
 }

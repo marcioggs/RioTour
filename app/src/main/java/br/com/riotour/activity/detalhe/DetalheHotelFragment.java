@@ -12,6 +12,7 @@ import com.google.common.primitives.Floats;
 
 import br.com.riotour.R;
 import br.com.riotour.dto.HotelDTO;
+import br.com.riotour.listener.EnviarEmailClickListener;
 import br.com.riotour.listener.LigarTelefoneClickListener;
 
 public class DetalheHotelFragment extends Fragment {
@@ -38,7 +39,8 @@ public class DetalheHotelFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lugar = (HotelDTO) getArguments().getSerializable(KEY_LUGAR);
+	    lugar = (HotelDTO) getArguments().getSerializable(KEY_LUGAR);
+
     }
 
     @Override
@@ -67,6 +69,7 @@ public class DetalheHotelFragment extends Fragment {
         campoEndereco.setText(endereco);
         campoFax.setText(lugar.getFax());
         campoEmail.setText(lugar.getEmail());
+	    campoEmail.setOnClickListener(new EnviarEmailClickListener(getActivity()));
 
         Float categoriaRating = Floats.tryParse(lugar.getCategoria());
         if (categoriaRating != null) {

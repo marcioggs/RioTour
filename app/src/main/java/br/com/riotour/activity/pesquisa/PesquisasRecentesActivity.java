@@ -15,8 +15,9 @@ import java.util.List;
 import java.util.Set;
 
 import br.com.riotour.R;
-import br.com.riotour.dao.PesquisaDAO;
 import br.com.riotour.dto.LugarDTO;
+import br.com.riotour.facade.PesquisaFacade;
+import br.com.riotour.facade.PesquisaFacadeImpl;
 
 
 public class PesquisasRecentesActivity extends ActionBarActivity {
@@ -26,7 +27,7 @@ public class PesquisasRecentesActivity extends ActionBarActivity {
 
     private ArrayAdapter<String> adapter;
     private List<String> pesquisas;
-    private PesquisaDAO pesquisaDAO;
+    private PesquisaFacade facade;
     private ListView listViewPesquisas;
     private Set<LugarDTO> lugares;
 
@@ -34,11 +35,12 @@ public class PesquisasRecentesActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesquisas_recentes);
-        lugares = (HashSet<LugarDTO>) getIntent().getSerializableExtra(LUGARES_KEY);
-        pesquisaDAO = new PesquisaDAO(this);
-        pesquisas = pesquisaDAO.queryPesquisa();
-        configurarViewPesquisas();
+	    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        lugares = (HashSet<LugarDTO>) getIntent().getSerializableExtra(LUGARES_KEY);
+        facade = new PesquisaFacadeImpl(this);
+        pesquisas = facade.obterTermos();
+        configurarViewPesquisas();
     }
 
 
@@ -51,25 +53,24 @@ public class PesquisasRecentesActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_clear) {
-            limparPesquisasRecentes();
-        }
-
-        return super.onOptionsItemSelected(item);
+	    switch (item.getItemId()) {
+		    case android.R.id.home:
+			    finish();
+			    return true;
+		    case R.id.menu_clear:
+			    limparPesquisasRecentes();
+			    return true;
+		    default:
+			    return super.onOptionsItemSelected(item);
+	    }
     }
 
     /**
      * Limpa as pesquisas recentes
      */
     private void limparPesquisasRecentes() {
-        pesquisaDAO.deleteAll();
-        pesquisas = pesquisaDAO.queryPesquisa();
+        facade.deletarTodosTermos();
+        pesquisas = facade.obterTermos();
         adapter.clear();
         adapter.notifyDataSetChanged();
         listViewPesquisas.refreshDrawableState();

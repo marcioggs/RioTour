@@ -21,8 +21,9 @@ import java.util.Set;
 
 import br.com.riotour.R;
 import br.com.riotour.activity.detalhe.DetalheActivity;
-import br.com.riotour.dao.PesquisaDAO;
 import br.com.riotour.dto.LugarDTO;
+import br.com.riotour.facade.PesquisaFacade;
+import br.com.riotour.facade.PesquisaFacadeImpl;
 import br.com.riotour.util.levenshteindistance.LevenshteinDistance;
 
 public class PesquisaActivity extends ActionBarActivity {
@@ -33,7 +34,7 @@ public class PesquisaActivity extends ActionBarActivity {
     private Set<LugarDTO> lugares;
     private LugarDTO[] lugaresFiltrados;
     private ListView resultados;
-    private PesquisaDAO pesquisaDAO;
+    private PesquisaFacade facade;
     private String pesquisaAnterior;
 
     @Override
@@ -44,7 +45,7 @@ public class PesquisaActivity extends ActionBarActivity {
 
         lugares = (HashSet<LugarDTO>) getIntent().getSerializableExtra(LUGARES_KEY);
         pesquisaAnterior = getIntent().getStringExtra(PESQUISA_KEY);
-        pesquisaDAO = new PesquisaDAO(this);
+        facade = new PesquisaFacadeImpl(this);
 
         configurarViewPesquisa();
         configurarViewResultados();
@@ -80,7 +81,7 @@ public class PesquisaActivity extends ActionBarActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                pesquisaDAO.inserir(query);
+                facade.inserirTermo(query);
                 return false;
             }
 
@@ -102,7 +103,7 @@ public class PesquisaActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LugarDTO lugarSelecionado = lugaresFiltrados[position];
-                pesquisaDAO.inserir(lugarSelecionado.getNome());
+                facade.inserirTermo(lugarSelecionado.getNome());
                 Intent intent = new Intent(PesquisaActivity.this, DetalheActivity.class);
                 intent.putExtra(DetalheActivity.LUGAR_KEY, lugarSelecionado);
                 startActivity(intent);

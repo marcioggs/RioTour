@@ -2,8 +2,12 @@ package br.com.riotour.facade;
 
 import android.content.Context;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
+
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import br.com.riotour.dao.LugarDAO;
@@ -39,5 +43,18 @@ public class LugarFacadeImpl implements LugarFacade {
 
         return lugares;
     }
+
+	@Override
+	public Set<LugarDTO> filtrarLugares(final Map<String, Boolean> lugaresAtivos, Set<LugarDTO> lugares) {
+		return	FluentIterable
+					.from(lugares)
+					.filter(new Predicate<LugarDTO>() {
+						@Override
+						public boolean apply(LugarDTO lugar) {
+							return lugaresAtivos.get(lugar.getTipo()).booleanValue();
+						}
+					})
+					.toSet();
+	}
 
 }

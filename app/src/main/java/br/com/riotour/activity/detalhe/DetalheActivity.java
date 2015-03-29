@@ -1,10 +1,13 @@
 package br.com.riotour.activity.detalhe;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +24,7 @@ import br.com.riotour.dto.PraiaDTO;
 public class DetalheActivity extends ActionBarActivity {
 
     public static final String LUGAR_KEY = "lugar";
-
+    private LugarDTO lugar;
     //TODO: Trocar nomes por ícones? (Ex: Ícone de email)
     //TODO: Pegar imagem do Google imagens quando não tiver?
     //TODO: Criar intent para permitir telefonar para os números da app.
@@ -33,7 +36,7 @@ public class DetalheActivity extends ActionBarActivity {
         setContentView(R.layout.activity_detalhe);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        LugarDTO lugar = (LugarDTO) getIntent().getSerializableExtra(LUGAR_KEY);
+        lugar = (LugarDTO) getIntent().getSerializableExtra(LUGAR_KEY);
 
         TextView nomeLugar = (TextView) findViewById(R.id.nome_lugar);
         ImageView iconeLugar = (ImageView) findViewById(R.id.icone_lugar);
@@ -111,5 +114,12 @@ public class DetalheActivity extends ActionBarActivity {
         }
 
         return f;
+    }
+
+    public void abrirCaminho(View view) {
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lugar.getPositionToString());
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 }

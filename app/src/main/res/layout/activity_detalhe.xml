@@ -32,6 +32,7 @@
             android:layout_height="120dp"
             android:layout_below="@+id/nome_lugar"
             android:layout_marginTop="12dp"
+            android:onClick="abrirCaminho"
             tools:src="@drawable/monumento" />
 
         <RelativeLayout

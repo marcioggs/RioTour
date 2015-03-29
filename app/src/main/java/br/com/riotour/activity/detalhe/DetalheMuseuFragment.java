@@ -1,7 +1,6 @@
 package br.com.riotour.activity.detalhe;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import br.com.riotour.R;
 import br.com.riotour.dto.MuseuDTO;
 import br.com.riotour.listener.LigarTelefoneClickListener;
 
-public class DetalheMuseuFragment extends Fragment {
+public class DetalheMuseuFragment extends DetalheFragment {
 
     public static final String KEY_LUGAR = "lugar";
     private MuseuDTO lugar;
@@ -55,6 +54,8 @@ public class DetalheMuseuFragment extends Fragment {
         campoEndereco.setText(endereco);
         campoTelefone.setText(lugar.getTelefone());
 	    campoTelefone.setOnClickListener(new LigarTelefoneClickListener(getActivity()));
+
+	    esconderCamposVazios(v);
 
         return v;
     }

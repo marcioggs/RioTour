@@ -1,7 +1,6 @@
 package br.com.riotour.activity.detalhe;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import br.com.riotour.dto.HotelDTO;
 import br.com.riotour.listener.EnviarEmailClickListener;
 import br.com.riotour.listener.LigarTelefoneClickListener;
 
-public class DetalheHotelFragment extends Fragment {
+public class DetalheHotelFragment extends DetalheFragment {
 
     public static final String KEY_LUGAR = "lugar";
     private HotelDTO lugar;
@@ -90,6 +89,8 @@ public class DetalheHotelFragment extends Fragment {
 	    campoTelefone.setOnClickListener(new LigarTelefoneClickListener(getActivity()));
         campoCnpj.setText(lugar.getCnpj());
         campoIdiomasFalados.setText(lugar.getIdiomasFalados());
+
+	    esconderCamposVazios(v);
 
 	    return v;
     }

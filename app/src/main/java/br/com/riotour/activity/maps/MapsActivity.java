@@ -46,7 +46,6 @@ public class MapsActivity extends ActionBarActivity {
     //TODO: Manter a posição quando mudar de orientação.
     //TODO: Atualizar materialdrawer foi utilizada uma versão anterior que o botao sanduiche funcionava
     //TODO: Desenvolver Activity de Sobre
-    //TODO: Adicionar rota do google maps nos detalhes do local.
 
     private static final LatLng POS_RJ = new LatLng(-22.9068467, -43.1728965);
     private static final float ZOOM_RJ = 13f;

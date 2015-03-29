@@ -1,7 +1,6 @@
 package br.com.riotour.activity.detalhe;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import br.com.riotour.R;
 import br.com.riotour.dto.MonumentoDTO;
 
-public class DetalheMonumentoFragment extends Fragment {
+public class DetalheMonumentoFragment extends DetalheFragment {
 
     public static final String KEY_LUGAR = "lugar";
     private MonumentoDTO lugar;
@@ -55,6 +54,8 @@ public class DetalheMonumentoFragment extends Fragment {
         campoAutor.setText(lugar.getAutor());
         campoInauguracao.setText(lugar.getInauguracao());
         campoLocalizacao.setText(lugar.getLocalizacao());
+
+	    esconderCamposVazios(v);
 
         return v;
     }

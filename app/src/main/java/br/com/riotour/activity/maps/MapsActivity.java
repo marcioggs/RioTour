@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -60,6 +61,7 @@ public class MapsActivity extends ActionBarActivity {
     private ImageButton getCurrentLocation;
     private GPSTracker gps;
     private Drawer.Result result = null;
+    private boolean filter_hotel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -260,4 +262,19 @@ public class MapsActivity extends ActionBarActivity {
     }
 
 
+    public void filtrar(View view) {
+        FloatingActionButton button = (FloatingActionButton) view;
+        if (R.id.filter_hotel == view.getId()) {
+            if (!filter_hotel) {
+                button.setActivated(true);
+                button.refreshDrawableState();
+                filter_hotel = true;
+            } else {
+                button.setActivated(false);
+                filter_hotel = false;
+            }
+
+        }
+
+    }
 }

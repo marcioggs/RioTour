@@ -11,33 +11,18 @@
         android:layout_height="match_parent"
         tools:context="br.com.riotour.activity.maps.MapsActivity" />
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/getCurrentLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
-        android:layout_marginRight="5dp"
-        riotour:fab_colorNormal="#64B5F6"
-        riotour:fab_colorPressed="#2196F3"
-        riotour:fab_icon="@android:drawable/ic_menu_mylocation"
-        riotour:fab_size="mini" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/multiple_filters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         riotour:fab_addButtonColorNormal="@color/light_blue"
         riotour:fab_addButtonColorPressed="@color/blue"
         riotour:fab_addButtonPlusIconColor="@color/white"
         riotour:fab_addButtonSize="mini"
-        riotour:fab_expandDirection="down"
+        riotour:fab_expandDirection="up"
         riotour:fab_labelsPosition="right">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -95,6 +80,17 @@
             riotour:fab_size="mini"
             riotour:fab_title="Praias" />
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/getCurrentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/multiple_filters"
+        android:layout_toLeftOf="@id/multiple_filters"
+        riotour:fab_colorNormal="#64B5F6"
+        riotour:fab_colorPressed="#2196F3"
+        riotour:fab_icon="@android:drawable/ic_menu_mylocation"
+        riotour:fab_size="mini" />
 
     <RelativeLayout
         android:id="@+id/detalhe"

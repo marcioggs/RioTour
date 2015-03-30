@@ -45,10 +45,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_addButtonSize="mini"
             riotour:fab_colorNormal="@color/light_blue"
             riotour:fab_colorPressed="@color/blue"
             riotour:fab_icon="@drawable/hotel"
+            riotour:fab_size="mini"
             riotour:fab_title="Hotéis" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -56,10 +56,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_addButtonSize="mini"
             riotour:fab_colorNormal="@color/light_blue"
             riotour:fab_colorPressed="@color/blue"
             riotour:fab_icon="@drawable/monumento"
+            riotour:fab_size="mini"
             riotour:fab_title="Monumentos" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -67,10 +67,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_addButtonSize="mini"
             riotour:fab_colorNormal="@color/light_blue"
             riotour:fab_colorPressed="@color/blue"
             riotour:fab_icon="@drawable/museu"
+            riotour:fab_size="mini"
             riotour:fab_title="Museus" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -78,10 +78,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_addButtonSize="mini"
             riotour:fab_colorNormal="@color/light_blue"
             riotour:fab_colorPressed="@color/blue"
             riotour:fab_icon="@drawable/ponto_turistico"
+            riotour:fab_size="mini"
             riotour:fab_title="Pontos Turisticos" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -89,10 +89,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_addButtonSize="mini"
             riotour:fab_colorNormal="@color/light_blue"
             riotour:fab_colorPressed="@color/blue"
             riotour:fab_icon="@drawable/praia"
+            riotour:fab_size="mini"
             riotour:fab_title="Praias" />
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

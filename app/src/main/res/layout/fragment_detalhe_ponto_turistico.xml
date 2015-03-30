@@ -31,10 +31,11 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/campo_telefone" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@android:drawable/stat_sys_phone_call"
+            android:tint="@color/blue" />
 
         <TextView
             android:id="@+id/campo_telefone"

@@ -11,7 +11,6 @@ RioTour - Guia turístico no Rio de Janeiro
 
 Projeto:
 --------
-https://github.com/marcioggs/RioTour/
 
 
 ![](ppt/Slide1.PNG)

@@ -44,7 +44,7 @@ public class LugarDAOImpl implements LugarDAO {
             PontoTuristicoDTO lugar = new PontoTuristicoDTO();
 
             lugar.setIcone(R.drawable.ponto_turistico);
-            lugar.setTipo("Ponto Turístico");
+            lugar.setTipo(ctx.getString(R.string.tipo_lugar_ponto_turistico));
             lugar.setNome(linha.get("Nome"));
             lugar.setEndereco(linha.get("Endereço"));
             lugar.setNumero(linha.get("Número"));
@@ -74,7 +74,7 @@ public class LugarDAOImpl implements LugarDAO {
             HotelDTO lugar = new HotelDTO();
 
             lugar.setIcone(R.drawable.hotel);
-            lugar.setTipo("Hotel");
+            lugar.setTipo(ctx.getString(R.string.tipo_lugar_hotel));
             lugar.setNome(linha.get("Nome"));
             lugar.setLogradouro(linha.get("Logradouro"));
             lugar.setNumero(linha.get("Número"));
@@ -115,7 +115,7 @@ public class LugarDAOImpl implements LugarDAO {
                 lugar.setIcone(R.drawable.cristo);
             else
                 lugar.setIcone(R.drawable.monumento);
-            lugar.setTipo("Monumento");
+            lugar.setTipo(ctx.getString(R.string.tipo_lugar_monumento));
             lugar.setCodigo(linha.get("Código"));
             lugar.setNome(linha.get("Nome"));
             lugar.setHistorico(linha.get("Histórico"));
@@ -147,7 +147,7 @@ public class LugarDAOImpl implements LugarDAO {
             MuseuDTO lugar = new MuseuDTO();
 
             lugar.setIcone(R.drawable.museu);
-            lugar.setTipo("Museu");
+            lugar.setTipo(ctx.getString(R.string.tipo_lugar_museu));
             lugar.setNome(linha.get("Nome"));
             lugar.setEndereco(linha.get("Endereço"));
             lugar.setNumero(linha.get("Número"));
@@ -177,7 +177,7 @@ public class LugarDAOImpl implements LugarDAO {
             PraiaDTO lugar = new PraiaDTO();
 
             lugar.setIcone(R.drawable.praia);
-            lugar.setTipo("Praia");
+            lugar.setTipo(ctx.getString(R.string.tipo_lugar_praia));
             lugar.setNome(linha.get("Nome"));
             lugar.setEndereco(linha.get("Endereço"));
             lugar.setNumero(linha.get("Número"));

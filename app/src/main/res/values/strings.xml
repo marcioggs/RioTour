@@ -34,4 +34,13 @@
     <string name="title_activity_pesquisas_recentes">Pesquisas Recentes</string>
     <string name="pesquisa">Pesquisa</string>
     <string name="limpar">Limpar</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_pesquisar">Pesquisar</string>
+    <string name="menu_pesquisas_recentes">Pesquisas Recentes</string>
+    <string name="menu_sobre">Sobre</string>
+    <string name="tipo_lugar_ponto_turistico">Ponto Turístico</string>
+    <string name="tipo_lugar_hotel">Hotel</string>
+    <string name="tipo_lugar_monumento">Monumento</string>
+    <string name="tipo_lugar_museu">Museu</string>
+    <string name="tipo_lugar_praia">Praia</string>
 </resources>

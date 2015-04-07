@@ -85,11 +85,11 @@ public class MapsActivity extends ActionBarActivity {
                 .withActionBarDrawerToggleAnimated(true)
                 .withActionBarDrawerToggle(true)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Home"),
-                        new SecondaryDrawerItem().withName("Pesquisar"),
-                        new SecondaryDrawerItem().withName("Pesquisas Recentes"),
+                        new PrimaryDrawerItem().withName(getString(R.string.menu_home)),
+                        new SecondaryDrawerItem().withName(getString(R.string.menu_pesquisar)),
+                        new SecondaryDrawerItem().withName(getString(R.string.menu_pesquisas_recentes)),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Sobre")
+                        new SecondaryDrawerItem().withName(getString(R.string.menu_sobre))
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override

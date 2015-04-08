@@ -1,7 +1,7 @@
 package br.com.riotour.dto;
 
 /**
- * Classe responsável pela modelagem do monumento.
+ * Classe responsável pela modelagem do ico_monumento.
  */
 public class MonumentoDTO extends LugarDTO {
 

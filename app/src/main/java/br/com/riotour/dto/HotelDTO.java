@@ -1,7 +1,7 @@
 package br.com.riotour.dto;
 
 /**
- * Classe responsável pela modelagem do hotel.
+ * Classe responsável pela modelagem do ico_hotel.
  */
 public class HotelDTO extends LugarDTO {
 

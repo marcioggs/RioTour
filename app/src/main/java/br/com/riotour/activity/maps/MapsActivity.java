@@ -7,12 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -54,11 +54,12 @@ public class MapsActivity extends ActionBarActivity {
     private ClusterManager<LugarDTO> clusterManager;
     //Objetos usados na view de detalhe
     private View detalhe;
-    private ImageView icone;
+    private ImageView miniIcone;
     private TextView tipo;
     private TextView nome;
     private LugarDTO lugarSelecionado;
-    private ImageButton getCurrentLocation;
+    private FloatingActionButton botaoLocalizacao;
+    private FloatingActionsMenu botaoFiltro;
     private GPSTracker gps;
     private Drawer.Result result = null;
 	private Map<String, Boolean> lugaresAtivos;
@@ -73,7 +74,8 @@ public class MapsActivity extends ActionBarActivity {
         configurarViewDetalhe();
         obterLugares();
         configurarMapa();
-        configurarObtemPosicao();
+        configurarBotaoLocalizacao();
+        configurarBotaoFiltro();
 	    configurarLugaresAtivos();
     }
 
@@ -149,9 +151,19 @@ public class MapsActivity extends ActionBarActivity {
         return true;
     }
 
-    private void configurarObtemPosicao() {
-        getCurrentLocation = (ImageButton) findViewById(R.id.getCurrentLocation);
-        getCurrentLocation.setOnClickListener(new View.OnClickListener() {
+    /**
+     * Configura o botão de filtro.
+     */
+    private void configurarBotaoFiltro() {
+        botaoFiltro = (FloatingActionsMenu) findViewById(R.id.botao_filtro);
+    }
+
+    /**
+     * Configura o botão de locaçização.
+     */
+    private void configurarBotaoLocalizacao() {
+        botaoLocalizacao = (FloatingActionButton) findViewById(R.id.botao_localizacao);
+        botaoLocalizacao.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -187,7 +199,7 @@ public class MapsActivity extends ActionBarActivity {
      */
     private void configurarViewDetalhe() {
         detalhe = findViewById(R.id.detalhe);
-        icone = (ImageView) findViewById(R.id.icone_lugar);
+        miniIcone = (ImageView) findViewById(R.id.mini_icone_lugar);
         tipo = (TextView) findViewById(R.id.tipo_lugar);
         nome = (TextView) findViewById(R.id.nome_lugar);
 
@@ -233,6 +245,9 @@ public class MapsActivity extends ActionBarActivity {
                 @Override
                 public void onMapClick(LatLng latLng) {
                     detalhe.setVisibility(View.GONE);
+
+                    botaoLocalizacao.setVisibility(View.VISIBLE);
+                    botaoFiltro.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -250,10 +265,14 @@ public class MapsActivity extends ActionBarActivity {
                     mapa.animateCamera(CameraUpdateFactory.newLatLng(lugar.getPosition()));
 
                     detalhe.setVisibility(View.VISIBLE);
-                    icone.setImageResource(lugar.getIcone());
+                    miniIcone.setImageResource(lugar.getMiniIcone());
                     tipo.setText(lugar.getTipo());
                     nome.setText(lugar.getNome());
                     lugarSelecionado = lugar;
+
+                    botaoLocalizacao.setVisibility(View.GONE);
+                    botaoFiltro.setVisibility(View.GONE);
+
                     return true;
                 }
             });

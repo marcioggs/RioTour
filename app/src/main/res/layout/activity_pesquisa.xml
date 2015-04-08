@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_white"
     tools:context="br.com.riotour.activity.pesquisa.PesquisaActivity">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="@color/white" />
+        android:background="@color/app_white" />
 
     <SearchView
         android:id="@+id/campo_pesquisa"

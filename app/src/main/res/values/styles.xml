@@ -3,8 +3,8 @@
     <style name="AppTheme" parent="AppTheme.Base"></style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/light_blue</item>
-        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorPrimary">@color/app_primary</item>
+        <item name="colorPrimaryDark">@color/app_blue</item>
         <item name="actionBarStyle">@style/MyActionBarStyle</item>
     </style>
 
@@ -13,7 +13,7 @@
     </style>
 
     <style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/app_white</item>
     </style>
 
 </resources>

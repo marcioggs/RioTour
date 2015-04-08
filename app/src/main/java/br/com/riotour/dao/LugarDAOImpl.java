@@ -43,7 +43,8 @@ public class LugarDAOImpl implements LugarDAO {
         while (linha != null) {
             PontoTuristicoDTO lugar = new PontoTuristicoDTO();
 
-            lugar.setIcone(R.drawable.ponto_turistico);
+            lugar.setIcone(R.drawable.ico_ponto_turistico);
+            lugar.setMiniIcone(R.drawable.ico_mini_ponto_turistico);
             lugar.setTipo(ctx.getString(R.string.tipo_lugar_ponto_turistico));
             lugar.setNome(linha.get("Nome"));
             lugar.setEndereco(linha.get("Endereço"));
@@ -73,7 +74,8 @@ public class LugarDAOImpl implements LugarDAO {
         while (linha != null) {
             HotelDTO lugar = new HotelDTO();
 
-            lugar.setIcone(R.drawable.hotel);
+            lugar.setIcone(R.drawable.ico_hotel);
+            lugar.setMiniIcone(R.drawable.ico_mini_hotel);
             lugar.setTipo(ctx.getString(R.string.tipo_lugar_hotel));
             lugar.setNome(linha.get("Nome"));
             lugar.setLogradouro(linha.get("Logradouro"));
@@ -111,10 +113,13 @@ public class LugarDAOImpl implements LugarDAO {
         while (linha != null) {
             MonumentoDTO lugar = new MonumentoDTO();
 
-            if (linha.get("Nome").equals("Cristo Redentor"))
-                lugar.setIcone(R.drawable.cristo);
-            else
-                lugar.setIcone(R.drawable.monumento);
+            if (linha.get("Nome").equals("Cristo Redentor")) {
+                lugar.setIcone(R.drawable.ico_cristo);
+                lugar.setMiniIcone(R.drawable.ico_mini_cristo);
+            } else {
+                lugar.setIcone(R.drawable.ico_monumento);
+                lugar.setMiniIcone(R.drawable.ico_mini_monumento);
+            }
             lugar.setTipo(ctx.getString(R.string.tipo_lugar_monumento));
             lugar.setCodigo(linha.get("Código"));
             lugar.setNome(linha.get("Nome"));
@@ -146,7 +151,8 @@ public class LugarDAOImpl implements LugarDAO {
         while (linha != null) {
             MuseuDTO lugar = new MuseuDTO();
 
-            lugar.setIcone(R.drawable.museu);
+            lugar.setIcone(R.drawable.ico_museu);
+            lugar.setMiniIcone(R.drawable.ico_mini_museu);
             lugar.setTipo(ctx.getString(R.string.tipo_lugar_museu));
             lugar.setNome(linha.get("Nome"));
             lugar.setEndereco(linha.get("Endereço"));
@@ -176,7 +182,8 @@ public class LugarDAOImpl implements LugarDAO {
         while (linha != null) {
             PraiaDTO lugar = new PraiaDTO();
 
-            lugar.setIcone(R.drawable.praia);
+            lugar.setIcone(R.drawable.ico_praia);
+            lugar.setMiniIcone(R.drawable.ico_mini_praia);
             lugar.setTipo(ctx.getString(R.string.tipo_lugar_praia));
             lugar.setNome(linha.get("Nome"));
             lugar.setEndereco(linha.get("Endereço"));

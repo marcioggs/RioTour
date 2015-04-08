@@ -1,7 +1,7 @@
 package br.com.riotour.dto;
 
 /**
- * Classe responsável pela modelagem da praia.
+ * Classe responsável pela modelagem da ico_praia.
  */
 public class PraiaDTO extends LugarDTO {
 

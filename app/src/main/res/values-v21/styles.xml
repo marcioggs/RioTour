@@ -1,6 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="AppTheme.Base">
-        <item name="android:navigationBarColor">@color/light_blue</item>
+        <item name="android:navigationBarColor">@color/app_primary</item>
     </style>
 </resources>

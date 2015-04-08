@@ -15,6 +15,7 @@ public abstract class LugarDTO implements ClusterItem, Serializable {
     private double latitude;
     private double longitude;
     private int icone;
+    private int miniIcone;
     private String tipo;
     private double indSimilaridadePesquisa;
 
@@ -72,6 +73,15 @@ public abstract class LugarDTO implements ClusterItem, Serializable {
     public void setIcone(int icone) {
         this.icone = icone;
     }
+
+    public int getMiniIcone() {
+        return miniIcone;
+    }
+
+    public void setMiniIcone(int miniIcone) {
+        this.miniIcone = miniIcone;
+    }
+
 
     public String getTipo() {
         return tipo;

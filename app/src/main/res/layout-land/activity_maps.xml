@@ -12,7 +12,7 @@
         tools:context="br.com.riotour.activity.maps.MapsActivity" />
 
     <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/getCurrentLocation"
+        android:id="@+id/botao_localizacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -24,15 +24,15 @@
         riotour:fab_size="mini" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiple_filters"
+        android:id="@+id/botao_filtro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignBottom="@id/getCurrentLocation"
-        android:layout_toLeftOf="@id/getCurrentLocation"
-        riotour:fab_addButtonColorNormal="@color/light_blue"
-        riotour:fab_addButtonColorPressed="@color/blue"
-        riotour:fab_addButtonPlusIconColor="@color/white"
+        android:layout_alignBottom="@id/botao_localizacao"
+        android:layout_toLeftOf="@id/botao_localizacao"
+        riotour:fab_addButtonColorNormal="@color/app_primary"
+        riotour:fab_addButtonColorPressed="@color/app_blue"
+        riotour:fab_addButtonPlusIconColor="@color/app_white"
         riotour:fab_addButtonSize="mini"
         riotour:fab_expandDirection="left"
         riotour:fab_labelsPosition="right">
@@ -42,9 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_colorNormal="@color/light_blue"
-            riotour:fab_colorPressed="@color/blue"
-            riotour:fab_icon="@drawable/hotel"
+            riotour:fab_colorNormal="@color/app_primary"
+            riotour:fab_colorPressed="@color/app_blue"
+            riotour:fab_icon="@drawable/ico_hotel"
             riotour:fab_size="mini"
             riotour:fab_title="Hotéis" />
 
@@ -53,9 +53,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_colorNormal="@color/light_blue"
-            riotour:fab_colorPressed="@color/blue"
-            riotour:fab_icon="@drawable/monumento"
+            riotour:fab_colorNormal="@color/app_primary"
+            riotour:fab_colorPressed="@color/app_blue"
+            riotour:fab_icon="@drawable/ico_monumento"
             riotour:fab_size="mini"
             riotour:fab_title="Monumentos" />
 
@@ -64,9 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_colorNormal="@color/light_blue"
-            riotour:fab_colorPressed="@color/blue"
-            riotour:fab_icon="@drawable/museu"
+            riotour:fab_colorNormal="@color/app_primary"
+            riotour:fab_colorPressed="@color/app_blue"
+            riotour:fab_icon="@drawable/ico_museu"
             riotour:fab_size="mini"
             riotour:fab_title="Museus" />
 
@@ -75,9 +75,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_colorNormal="@color/light_blue"
-            riotour:fab_colorPressed="@color/blue"
-            riotour:fab_icon="@drawable/ponto_turistico"
+            riotour:fab_colorNormal="@color/app_primary"
+            riotour:fab_colorPressed="@color/app_blue"
+            riotour:fab_icon="@drawable/ico_ponto_turistico"
             riotour:fab_size="mini"
             riotour:fab_title="Pontos Turisticos" />
 
@@ -86,9 +86,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="filtrarLugares"
-            riotour:fab_colorNormal="@color/light_blue"
-            riotour:fab_colorPressed="@color/blue"
-            riotour:fab_icon="@drawable/praia"
+            riotour:fab_colorNormal="@color/app_primary"
+            riotour:fab_colorPressed="@color/app_blue"
+            riotour:fab_icon="@drawable/ico_praia"
             riotour:fab_size="mini"
             riotour:fab_title="Praias" />
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
@@ -98,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_branco"
+        android:background="@drawable/bg_mini_detalhe"
         android:visibility="gone">
 
         <ImageView
@@ -117,6 +117,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/icone_lugar"
+            android:layout_centerHorizontal="true"
             android:textSize="12sp" />
 
         <TextView
@@ -124,18 +125,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/icone_lugar"
-            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/icone_lugar"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/info" />
 
     </RelativeLayout>
 

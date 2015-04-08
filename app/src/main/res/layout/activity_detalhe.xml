@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_white"
     tools:context="br.com.riotour.activity.detalhe.DetalheActivity">
 
     <RelativeLayout
@@ -24,7 +25,7 @@
             android:layout_alignTop="@id/nome_lugar"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/nome_lugar"
-            tools:src="@drawable/monumento" />
+            tools:src="@drawable/ico_monumento" />
 
         <ImageView
             android:id="@+id/mapa_lugar"
@@ -33,7 +34,7 @@
             android:layout_below="@+id/nome_lugar"
             android:layout_marginTop="12dp"
             android:onClick="abrirCaminho"
-            tools:src="@drawable/monumento" />
+            tools:src="@drawable/ico_monumento" />
 
         <RelativeLayout
             android:id="@+id/fragmentDetalhe"

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 import br.com.riotour.R;
@@ -57,6 +59,10 @@ public class DetalheActivity extends ActionBarActivity {
                     .add(R.id.fragmentDetalhe, obterFragmentoDetalhe(lugar))
                     .commit();
         }
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override

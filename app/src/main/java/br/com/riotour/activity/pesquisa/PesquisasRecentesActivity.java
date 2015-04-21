@@ -15,12 +15,13 @@ import java.util.List;
 import java.util.Set;
 
 import br.com.riotour.R;
+import br.com.riotour.activity.common.BaseActivity;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.facade.PesquisaFacade;
 import br.com.riotour.facade.PesquisaFacadeImpl;
 
 
-public class PesquisasRecentesActivity extends ActionBarActivity {
+public class PesquisasRecentesActivity extends BaseActivity {
 
     public static final String LUGARES_KEY = "lugares";
     public static final String PESQUISA_KEY = "pesquisa";
@@ -30,6 +31,11 @@ public class PesquisasRecentesActivity extends ActionBarActivity {
     private PesquisaFacade facade;
     private ListView listViewPesquisas;
     private Set<LugarDTO> lugares;
+
+    @Override
+    protected String getScreenName() {
+        return "Pesquisas Recentes";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

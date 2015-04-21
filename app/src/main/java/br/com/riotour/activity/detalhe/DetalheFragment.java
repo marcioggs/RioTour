@@ -1,6 +1,5 @@
 package br.com.riotour.activity.detalhe;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
@@ -10,7 +9,9 @@ import com.google.common.base.Strings;
 
 import java.util.ArrayList;
 
-public abstract class DetalheFragment extends Fragment {
+import br.com.riotour.activity.common.BaseFragment;
+
+public abstract class DetalheFragment extends BaseFragment {
 
 	/**
 	 * Esconde todos os campos de dados com valor vazio.

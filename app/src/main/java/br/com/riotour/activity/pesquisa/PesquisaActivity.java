@@ -20,13 +20,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import br.com.riotour.R;
+import br.com.riotour.activity.common.BaseActivity;
 import br.com.riotour.activity.detalhe.DetalheActivity;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.facade.PesquisaFacade;
 import br.com.riotour.facade.PesquisaFacadeImpl;
 import br.com.riotour.util.levenshteindistance.LevenshteinDistance;
 
-public class PesquisaActivity extends ActionBarActivity {
+public class PesquisaActivity extends BaseActivity {
 
     public static final String LUGARES_KEY = "lugares";
     public static final String PESQUISA_KEY = "pesquisa";
@@ -36,6 +37,11 @@ public class PesquisaActivity extends ActionBarActivity {
     private ListView resultados;
     private PesquisaFacade facade;
     private String pesquisaAnterior;
+
+    @Override
+    protected String getScreenName() {
+        return "Pesquisa";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

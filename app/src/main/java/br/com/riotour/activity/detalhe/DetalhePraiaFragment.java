@@ -32,6 +32,11 @@ public class DetalhePraiaFragment extends DetalheFragment {
     }
 
     @Override
+    protected String getScreenName() {
+        return "Detalhe - Praia=";
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lugar = (PraiaDTO) getArguments().getSerializable(KEY_LUGAR);

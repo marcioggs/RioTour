@@ -32,6 +32,11 @@ public class DetalhePontoTuristicoFragment extends DetalheFragment {
     }
 
     @Override
+    protected String getScreenName() {
+        return "Detalhe - Ponto Turístico";
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lugar = (PontoTuristicoDTO) getArguments().getSerializable(KEY_LUGAR);

@@ -34,6 +34,11 @@ public class DetalheMonumentoFragment extends DetalheFragment {
     }
 
     @Override
+    protected String getScreenName() {
+        return "Detalhe - Monumento";
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lugar = (MonumentoDTO) getArguments().getSerializable(KEY_LUGAR);

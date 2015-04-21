@@ -32,6 +32,7 @@ import java.util.Map;
 import java.util.Set;
 
 import br.com.riotour.R;
+import br.com.riotour.activity.common.BaseActivity;
 import br.com.riotour.activity.detalhe.DetalheActivity;
 import br.com.riotour.activity.pesquisa.PesquisaActivity;
 import br.com.riotour.activity.pesquisa.PesquisasRecentesActivity;
@@ -39,7 +40,7 @@ import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.facade.LugarFacade;
 import br.com.riotour.facade.LugarFacadeImpl;
 
-public class MapsActivity extends ActionBarActivity {
+public class MapsActivity extends BaseActivity {
 
     //TODO: Trocar ícone do cluster.
     //TODO: Trocar ícone do marcador selecionado.
@@ -65,7 +66,12 @@ public class MapsActivity extends ActionBarActivity {
 	private Map<String, Boolean> lugaresAtivos;
 	private LugarFacade facade;
 
-	@Override
+    @Override
+    protected String getScreenName() {
+        return "Mapa";
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);

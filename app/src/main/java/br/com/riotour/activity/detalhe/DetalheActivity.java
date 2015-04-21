@@ -16,6 +16,7 @@ import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 import br.com.riotour.R;
+import br.com.riotour.activity.common.BaseActivity;
 import br.com.riotour.dto.HotelDTO;
 import br.com.riotour.dto.LugarDTO;
 import br.com.riotour.dto.MonumentoDTO;
@@ -23,12 +24,16 @@ import br.com.riotour.dto.MuseuDTO;
 import br.com.riotour.dto.PontoTuristicoDTO;
 import br.com.riotour.dto.PraiaDTO;
 
-public class DetalheActivity extends ActionBarActivity {
+public class DetalheActivity extends BaseActivity {
 
     public static final String LUGAR_KEY = "lugar";
     private LugarDTO lugar;
-    //TODO: Trocar nomes por ícones? (Ex: Ícone de email)
     //TODO: Pegar imagem do Google imagens quando não tiver?
+
+    @Override
+    protected String getScreenName() {
+        return "Detalhe";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
